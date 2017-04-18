@@ -1,5 +1,5 @@
 " Vim Configuration File for Gosin
-" 2017 04 17
+" 2017 04 18
 " Practicing my skill.
 
 " Plugins
@@ -38,8 +38,8 @@ Plugin 'mattn/emmet-vim'
 " Fugitive for enhanced git plugin
 Plugin 'tpope/vim-fugitive'
 
-" ale, Asynchronous Lint Engine
-Plugin 'w0rp/ale'
+" Syntastic Plugin
+Plugin 'scrooloose/syntastic'
 
 " End Vundle
 call vundle#end()
@@ -105,12 +105,17 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespaces when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" settings for ale
-set statusline+=%{ALEGetStatusLine}
+" settings for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" lint javascript file
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" set syntastic eslint to use project-specific binary of eslint
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 
-" setting tabs for JavaScript
+" set tabs for javascript
 autocmd Filetype javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2 
