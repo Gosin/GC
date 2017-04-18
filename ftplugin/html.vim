@@ -97,4 +97,3 @@ fu! s:HighlightTagAtPosition(position)
     let w:tag_hl_on = 1
 endfu
 
-" vim: set ts=8 sts=4 sw=4 expandtab :
