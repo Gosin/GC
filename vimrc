@@ -38,8 +38,8 @@ Plugin 'mattn/emmet-vim'
 " Fugitive for enhanced git plugin
 Plugin 'tpope/vim-fugitive'
 
-" Syntastic Plugin
-Plugin 'scrooloose/syntastic'
+" Asynchronous Linter Engine
+Plugin 'w0rp/ale'
 
 " End Vundle
 call vundle#end()
@@ -105,17 +105,9 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespaces when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" settings for Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" set syntastic eslint to use project-specific binary of eslint
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+" settings for ALE
+" add ALE to statusline
+set statusline+=%{ALEGetStatusline()}
 
 " set tabs for javascript
 autocmd Filetype javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2 
