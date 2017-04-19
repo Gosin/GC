@@ -111,3 +111,6 @@ set statusline+=%{ALEGetStatusline()}
 
 " set tabs for javascript
 autocmd Filetype javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2 
+
+" getting path of npm bin function
+" echo join(split(system('npm bin')) + ['eslint'], '/')
