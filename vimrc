@@ -41,6 +41,9 @@ Plugin 'tpope/vim-fugitive'
 " Asynchronous Linter Engine
 Plugin 'w0rp/ale'
 
+" Vue syntax highlight
+Plugin 'posva/vim-vue'
+
 " End Vundle
 call vundle#end()
 " Vundle ended so enable filetypes
