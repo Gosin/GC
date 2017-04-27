@@ -44,6 +44,9 @@ Plugin 'w0rp/ale'
 " Vue syntax highlight
 Plugin 'posva/vim-vue'
 
+" JavaScript highlight
+Plugin 'pangloss/vim-javascript'
+
 " End Vundle
 call vundle#end()
 " Vundle ended so enable filetypes
