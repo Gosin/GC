@@ -120,6 +120,8 @@ let g:NERDTrimTrailingWhitespace = 1
 " settings for ALE
 " add ALE to statusline
 set statusline+=%{ALEGetStatusline()}
+" only use htmlhint to lint html file since tidy doesn't support HTML5.
+let g:ale_linters = {'html': ['htmlhint']}
 
 " set tabs for javascript
 autocmd Filetype javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2 
