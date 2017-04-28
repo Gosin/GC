@@ -44,11 +44,11 @@ Plugin 'w0rp/ale'
 " HTML5 syntax highlighting
 Plugin 'othree/html5.vim'
 
-" Vue syntax highlighting
-Plugin 'posva/vim-vue'
-
 " JavaScript syntax highlighting 
 Plugin 'pangloss/vim-javascript'
+
+" JavaScript library synstax highlighting
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 " Markdown syntax highlighting
 Plugin 'plasticboy/vim-markdown'
@@ -122,6 +122,9 @@ let g:NERDTrimTrailingWhitespace = 1
 set statusline+=%{ALEGetStatusline()}
 " only use htmlhint to lint html file since tidy doesn't support HTML5.
 let g:ale_linters = {'html': ['htmlhint']}
+
+" setup library used for javascript
+let g:used_javascript_libs = 'jquery,vue'
 
 " getting path of npm bin function
 " echo join(split(system('npm bin')) + ['eslint'], '/')
