@@ -121,7 +121,10 @@ let g:NERDTrimTrailingWhitespace = 1
 " add ALE to statusline
 set statusline+=%{ALEGetStatusline()}
 " only use htmlhint to lint html file since tidy doesn't support HTML5.
-let g:ale_linters = {'html': ['htmlhint']}
+let g:ale_linters = {
+    \ 'html': ['htmlhint'],
+    \ 'javascript': ['eslint'],
+    \ }
 
 " setup library used for javascript
 let g:used_javascript_libs = 'jquery,vue'
