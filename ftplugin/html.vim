@@ -97,3 +97,6 @@ fu! s:HighlightTagAtPosition(position)
     let w:tag_hl_on = 1
 endfu
 
+" set tabstop to 2 instead of 4
+setlocal shiftwidth=2
+setlocal tabstop=2
