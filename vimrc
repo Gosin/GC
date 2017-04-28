@@ -21,7 +21,7 @@ Plugin 'altercation/vim-colors-solarized'
 " Functionality
 
 " ctrlp for file fuzzy search
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Ack.vim uses ack to search within files
 Plugin 'mileszs/ack.vim'
@@ -128,9 +128,11 @@ let g:used_javascript_libs = 'jquery,vue'
 
 " settings for ctrlp
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_depth = 42
 let g:ctrlp_open_new_file = 'v'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/](node_modules|semantic)$',
+    \ }
 
 " getting path of npm bin function
 " echo join(split(system('npm bin')) + ['eslint'], '/')
