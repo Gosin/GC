@@ -100,3 +100,5 @@ endfu
 " set tabstop to 2 instead of 4
 setlocal shiftwidth=2
 setlocal tabstop=2
+setlocal softtabstop=2
+setlocal expandtab
