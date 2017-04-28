@@ -126,5 +126,11 @@ let g:ale_linters = {'html': ['htmlhint']}
 " setup library used for javascript
 let g:used_javascript_libs = 'jquery,vue'
 
+" settings for ctrlp
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_depth = 42
+let g:ctrlp_open_new_file = 'v'
+let g:ctrlp_show_hidden = 1
+
 " getting path of npm bin function
 " echo join(split(system('npm bin')) + ['eslint'], '/')
