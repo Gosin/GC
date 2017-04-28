@@ -41,11 +41,17 @@ Plugin 'tpope/vim-fugitive'
 " Asynchronous Linter Engine
 Plugin 'w0rp/ale'
 
-" Vue syntax highlight
+" HTML5 syntax highlighting
+Plugin 'othree/html5.vim'
+
+" Vue syntax highlighting
 Plugin 'posva/vim-vue'
 
-" JavaScript highlight
+" JavaScript syntax highlighting 
 Plugin 'pangloss/vim-javascript'
+
+" Markdown syntax highlighting
+Plugin 'plasticboy/vim-markdown'
 
 " End Vundle
 call vundle#end()
