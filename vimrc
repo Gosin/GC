@@ -56,6 +56,9 @@ Plugin 'plasticboy/vim-markdown'
 " Mathematica syntax highlighting
 Plugin 'rsmenon/vim-mathematica'
 
+" Vue highlight
+Plugin 'posva/vim-vue'
+
 " End Vundle
 call vundle#end()
 " Vundle ended so enable filetypes
