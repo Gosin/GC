@@ -53,6 +53,9 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 " Markdown syntax highlighting
 Plugin 'plasticboy/vim-markdown'
 
+" Vue highlight
+Plugin 'posva/vim-vue'
+
 " End Vundle
 call vundle#end()
 " Vundle ended so enable filetypes
