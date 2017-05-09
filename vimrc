@@ -142,6 +142,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/](node_modules|semantic)$',
     \ }
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|project|DS_Store)&'
 
 " getting path of npm bin function
 " echo join(split(system('npm bin')) + ['eslint'], '/')
