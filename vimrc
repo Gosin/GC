@@ -1,5 +1,5 @@
 " Vim Configuration File for Gosin
-" 2017 04 18
+" 2017 05 09
 " Practicing my skill.
 
 " Plugins
@@ -55,6 +55,10 @@ Plugin 'plasticboy/vim-markdown'
 
 " Mathematica syntax highlighting
 Plugin 'rsmenon/vim-mathematica'
+
+" Vue highlight
+Plugin 'posva/vim-vue'
+>>>>>>> 08898a4a1f59e6440b82cb122193700fdeece8e2
 
 " End Vundle
 call vundle#end()
