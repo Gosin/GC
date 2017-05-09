@@ -53,6 +53,9 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 " Markdown syntax highlighting
 Plugin 'plasticboy/vim-markdown'
 
+" Mathematica syntax highlighting
+Plugin 'rsmenon/vim-mathematica'
+
 " End Vundle
 call vundle#end()
 " Vundle ended so enable filetypes
@@ -139,3 +142,4 @@ let g:ctrlp_custom_ignore = {
 
 " getting path of npm bin function
 " echo join(split(system('npm bin')) + ['eslint'], '/')
+au BufRead,BufNewFile *.wl set filetype=mma
