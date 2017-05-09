@@ -58,7 +58,6 @@ Plugin 'rsmenon/vim-mathematica'
 
 " Vue highlight
 Plugin 'posva/vim-vue'
->>>>>>> 08898a4a1f59e6440b82cb122193700fdeece8e2
 
 " End Vundle
 call vundle#end()
