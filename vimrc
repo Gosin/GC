@@ -90,6 +90,9 @@ set autoindent smartindent
 " Set auto wrap
 set wrap
 
+" Set textwidth with highlight column
+set colorcolumn=80,100
+
 " Set syntax highlight for CMake
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
 " Allow hidden buffers, don't limit to 1 file per window/split
