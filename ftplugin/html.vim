@@ -104,4 +104,4 @@ setlocal softtabstop=2
 setlocal expandtab
 
 " set folding based on syntax
-setlocal foldmethod=sytanx
+setlocal foldmethod=syntax
