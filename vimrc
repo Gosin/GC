@@ -139,7 +139,7 @@ let g:ale_linters = {
 let g:used_javascript_libs = 'jquery,vue'
 
 " settings for ctrlp
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_open_new_file = 'v'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
