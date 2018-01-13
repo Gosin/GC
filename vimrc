@@ -1,6 +1,6 @@
 " Vim Configuration File for Gosin
-" 2017 04 18
-" Practicing my skill.
+" 2018 01 13
+" Added YCM.
 
 " Plugins
 " ===============
@@ -19,6 +19,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " Functionality
+
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
 
 " ctrlp for file fuzzy search
 Plugin 'ctrlpvim/ctrlp.vim'
