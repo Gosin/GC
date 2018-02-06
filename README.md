@@ -1,7 +1,7 @@
-# Gosin_Vim
-Personal Vim configuration
+# Custom configurations of tools 
+Personal configuration
 
-
+## Vim
 * install Vundle ```git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim```
 * run **deployConfigs** to apply configs. 
 * install **Node.js** with **standard**, **eslint**, **htmlhint**.  
