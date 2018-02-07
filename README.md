@@ -1,4 +1,4 @@
-# Custom configurations of tools 
+# Configurations for tools used by Gosin
 Personal configuration
 
 ## Vim
