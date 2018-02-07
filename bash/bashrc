@@ -1,0 +1,15 @@
+export BASH_CONF="bashrc"
+
+# useful aliases
+# don't group names for long listing
+alias ls='ls -G'
+# add color scheme support for tmux in iterm2
+alias tmux="TERM=screen-256color-bce tmux"
+
+# add git completion
+source ~/.git-completion.bash
+# add git prompt
+source ~/.git-prompt.sh
+# change prompt to show git branch
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+
