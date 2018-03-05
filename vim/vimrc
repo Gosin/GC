@@ -23,6 +23,9 @@ Plugin 'altercation/vim-colors-solarized'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
+" surround for quoting/paraenthesizing
+Plugin 'tpope/vim-surround'
+
 " ctrlp for file fuzzy search
 Plugin 'ctrlpvim/ctrlp.vim'
 
