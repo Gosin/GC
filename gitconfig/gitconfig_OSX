@@ -4,7 +4,7 @@
 [core]
 	excludesfile = /Users/Gosin/.gitignore_global
 	editor = vim
-credential]
+[credential]
 	helper = osxkeychain
 [filter "media"]
 	required = true
