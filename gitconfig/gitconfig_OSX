@@ -16,7 +16,6 @@
 	default = simple
 [rerere]
 	enabled = true
-	enabled = 1
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
