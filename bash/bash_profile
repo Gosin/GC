@@ -10,3 +10,7 @@ source ~/.git-completion.bash
 source ~/.git-prompt.sh
 # change prompt to show git branch
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+
+# Export GPG_TTY for gpg
+export GPG_TTY=$(tty)
+export PATH="/usr/local/sbin:$PATH"
