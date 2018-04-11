@@ -21,6 +21,9 @@
 	smudge = git lfs smudge %f
 	required = true
 [alias]
+	# Get all local branches without remote track.
+	local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\[/ { print $1 }'
+	# Show git log nicely.
 	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
 
 [commit]
