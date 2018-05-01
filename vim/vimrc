@@ -65,6 +65,9 @@ Plugin 'rsmenon/vim-mathematica'
 " Vue highlight
 Plugin 'posva/vim-vue'
 
+" Fuzzy finder
+Plugin 'Yggdroot/LeaderF'
+
 " End Vundle
 call vundle#end()
 " Vundle ended so enable filetypes
