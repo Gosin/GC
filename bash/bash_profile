@@ -3,6 +3,8 @@
 alias ls='ls -G'
 # add color scheme support for tmux in iterm2
 alias tmux="TERM=screen-256color-bce tmux"
+# start a simple python3 http server
+alias simpleHttp="python3 -m http.server --cgi 8000"
 
 # add git completion
 source ~/.git-completion.bash
