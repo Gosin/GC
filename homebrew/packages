@@ -10,8 +10,10 @@ git
 gnupg
 guile
 node
+nmap
 postgresql
 rust
+scipy
 the_silver_searcher
 tldr
 tmux
