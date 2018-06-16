@@ -99,8 +99,8 @@ set autoindent smartindent
 " Set auto wrap
 set wrap
 
-" Set format options: Using o will not continue use the format
-set formatoptions=tcrql
+" Set format options: Do not format line inserted by o 
+set formatoptions-=o
 
 " Set textwidth with highlight column
 set colorcolumn=80,100
