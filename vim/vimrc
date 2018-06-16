@@ -99,12 +99,17 @@ set autoindent smartindent
 " Set auto wrap
 set wrap
 
+" Set format options: Using o will not continue use the format
+set formatoptions=tcrql
+
 " Set textwidth with highlight column
 set colorcolumn=80,100
 
 " Set syntax highlight for CMake
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
+
 " Allow hidden buffers, don't limit to 1 file per window/split
+set hidden
 
 " Edit vimrc file
 :nnoremap <leader>ev :split $MYVIMRC<cr>
