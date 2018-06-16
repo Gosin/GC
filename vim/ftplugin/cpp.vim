@@ -19,3 +19,6 @@ setlocal textwidth=100
 
 " highlight matching braces
 setlocal showmatch
+
+" set format options with exceptions for command o
+setlocal formatoptions=crql
