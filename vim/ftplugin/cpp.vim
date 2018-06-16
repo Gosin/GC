@@ -1,5 +1,8 @@
 " Vim configuration file for C++
-"
+
+" Preventing vim built-in cpp.vim to override options.
+let b:did_ftplugin = 1
+
 " set UTF-8 encoding
 setlocal enc=utf-8
 setlocal fenc=utf-8
