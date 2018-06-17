@@ -25,3 +25,9 @@ setlocal showmatch
 
 " do not format line inserted by o 
 setlocal formatoptions-=o
+
+" Use cindent
+setlocal cindent
+
+" Indent scope declarations
+setlocal cinoptions+=g0,h2
