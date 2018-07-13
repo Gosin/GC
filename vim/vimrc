@@ -1,6 +1,12 @@
+" Temporary fix for warning message casued by deprecation of imp after python
+" 3.4
+if has('python3')
+    silent! python3 1
+endif
+
 " Vim Configuration File for Gosin
-" 2018 01 13
-" Added YCM.
+" 2018 07 13
+" Fix deprecated imp after python 3.4.
 
 " Plugins
 " ===============
