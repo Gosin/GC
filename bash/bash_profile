@@ -15,5 +15,5 @@ PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 # Export GPG_TTY for gpg
 export GPG_TTY=$(tty)
-# Add /usr/local/sbin to $PATH
+# Add /usr/local/sbin to $PATH for Homebrew
 export PATH="/usr/local/sbin:$PATH"
