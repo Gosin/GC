@@ -23,6 +23,9 @@ Plugin 'altercation/vim-colors-solarized'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
+" CMake syntax
+Plugin 'pboettch/vim-cmake-syntax'
+
 " surround for quoting/paraenthesizing
 Plugin 'tpope/vim-surround'
 
