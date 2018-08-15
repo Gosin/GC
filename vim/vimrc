@@ -126,6 +126,9 @@ iabbrev cl@ canling0@gmail.com
 " working email
 iabbrev xg@ xinguo@wolfram.com
 
+" Set global YCM extra conf file
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
 " Recommended settings for NERDCommenter
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
