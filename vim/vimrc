@@ -149,6 +149,8 @@ let g:NERDTrimTrailingWhitespace = 1
 " settings for ALE
 " add ALE to statusline
 set statusline+=%{ALEGetStatusline()}
+" ALE should only run explicitly sepcified linter.
+let g:ale_linters_explicit = 1
 " only use htmlhint to lint html file since tidy doesn't support HTML5.
 let g:ale_linters = {
     \ 'html': ['htmlhint'],
