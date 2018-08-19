@@ -2,7 +2,6 @@
 Personal configuration
 
 ## Vim
-* add temporary fix for python 3.7 warning
 * install Vundle ```git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim```
 * run **deployConfigs** to apply configs. 
 * install **Node.js** with **standard**, **eslint**, **htmlhint**.  
