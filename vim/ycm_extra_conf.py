@@ -16,6 +16,7 @@
 # along with ycmd.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import logging
 import ycm_core
 
 # These are the compilation flags that will be used in case there's no
@@ -95,6 +96,7 @@ def GetCompilationInfoForFile(filename):
 # This is the entry point; this function is called by ycmd to produce flags for
 # a file.
 def FlagsForFile(filename, **kwargs):
+    logging.info("Current file path: %s", filename)
     if not database:
         return {
           'flags': flags,
