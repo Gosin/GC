@@ -12,6 +12,8 @@ Personal configuration
   * C-Family completetion: Install `CMake` . Add `--clang-completer`.
   * Javascript completion: Install `Node.js` and `npm`. Add `--js-completer`.
   * Rust completion: Install `Rust`. Add `--rust-completer`.
+* Adding clang-format and clang-tidy to the environment.
+  * `ln -s path/to/clang-format /usr/local/bin/clang-format`
 
 ## Tmux
 * install tmux plugin manager ```git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm```
