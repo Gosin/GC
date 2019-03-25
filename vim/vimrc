@@ -161,6 +161,7 @@ let g:ale_linters = {
     \ 'cpp': ['clangtidy']
     \ }
 
+" settings for javascript-libraries-syntax
 " setup library used for javascript
 let g:used_javascript_libs = 'jquery,vue'
 
