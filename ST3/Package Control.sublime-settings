@@ -5,12 +5,15 @@
 	],
 	"installed_packages":
 	[
+		"Clang Format",
 		"CTags",
 		"Emmet",
 		"GitGutter",
 		"LaTeXTools",
 		"Package Control",
 		"Solarized Color Scheme",
+		"SublimeLinter",
+		"SublimeLinter-contrib-clang-tidy",
 		"WolframLanguage"
 	]
 }
