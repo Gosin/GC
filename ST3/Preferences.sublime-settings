@@ -11,7 +11,13 @@
 	[
 		"node_modules/"
 	],
-	"font_face": "Input Mono",
+	"font_face": "Fira Code",
+	"font_options":
+	[
+		"ss03", // traditional ampersand
+		"ss05", // traditional 'at' sign
+		"ss06", // thin backslash
+	],
 	"font_size": 14,
 	"ignored_packages":
 	[
