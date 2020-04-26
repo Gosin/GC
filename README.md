@@ -9,7 +9,8 @@ Personal configuration
   ```npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node```
 * Add ```.eslintrc``` as needed.  
 * YouCompleteMe plugin installation:
-  * C-Family completetion: Install `CMake` . Add `--clang-completer`.
+  * C-Family completetion: Install `CMake` . Add `--clang-completer` and `--clangd-completer`(https://clangd.llvm.org/installation.html) .
+  * Add softlink of `clangd` and `clang-tidy` to user binary directory.
   * Javascript completion: Install `Node.js` and `npm`. Add `--js-completer`.
   * Rust completion: Install `Rust`. Add `--rust-completer`.
 * Adding clang-format and clang-tidy to the environment.
