@@ -6,13 +6,10 @@
 	"installed_packages":
 	[
 		"Clang Format",
-		"CTags",
 		"Emmet",
 		"LaTeXTools",
+		"LSP",
 		"Package Control",
-		"Solarized Color Scheme",
-		"SublimeLinter",
-		"SublimeLinter-contrib-clang-tidy",
-		"WolframLanguage"
+		"Solarized Color Scheme"
 	]
 }
