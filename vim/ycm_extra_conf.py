@@ -113,7 +113,7 @@ def GetCompilationInfoForFile(filename, database):
 
 # This is the entry point; this function is called by ycmd to produce flags for
 # a file.
-def FlagsForFile(filename, **kwargs):
+def Settings(filename, **kwargs):
     logging.info("Current file path: %s", filename)
     database = FindNearestCompilationDatabase(os.path.dirname(filename))
     if not database:
