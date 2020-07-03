@@ -26,6 +26,9 @@ Plugin 'Valloric/YouCompleteMe'
 " CMake syntax
 Plugin 'pboettch/vim-cmake-syntax'
 
+" Rust plugin
+Plugin 'rust-lang/rust.vim'
+
 " surround for quoting/paraenthesizing
 Plugin 'tpope/vim-surround'
 
