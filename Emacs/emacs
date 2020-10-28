@@ -1,0 +1,10 @@
+;; user solarized dark color theme(https://github.com/sellout/emacs-color-theme-solarized.git)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/solarized_theme")
+(set-terminal-parameter nil 'background-mode 'dark)
+(set-frame-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
+
+;; define three useful commands(from org guide)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
