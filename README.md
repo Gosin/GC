@@ -16,9 +16,10 @@ Personal configuration
 * Adding clang-format and clang-tidy to the environment.
   * `ln -s path/to/clang-format /usr/local/bin/clang-format`
 
+## Emacs
+* Copy `init.el` to `~/.emacs.d/init.el`
+
+
 ## Tmux
 * install tmux plugin manager ```git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm```
 
-## Emacs
-
-* Copy `init.el` to `~/.emacs.d/init.el`
