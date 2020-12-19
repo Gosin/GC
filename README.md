@@ -11,10 +11,14 @@ Personal configuration
 * YouCompleteMe plugin installation:
   * C-Family completetion: Install `CMake` . Add `--clang-completer` and `--clangd-completer`(https://clangd.llvm.org/installation.html) .
   * Add softlink of `clangd` and `clang-tidy` to user binary directory.
-  * Javascript completion: Install `Node.js` and `npm`. Add `--js-completer`.
+  * Javascript completion: Install `Node.js` and `npm`. Add `--ts-completer`.
   * Rust completion: Install `Rust`. Add `--rust-completer`.
 * Adding clang-format and clang-tidy to the environment.
   * `ln -s path/to/clang-format /usr/local/bin/clang-format`
 
 ## Tmux
 * install tmux plugin manager ```git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm```
+
+## Emacs
+
+* Copy `init.el` to `~/.emacs.d/init.el`

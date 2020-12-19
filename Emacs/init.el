@@ -1,4 +1,9 @@
-;; user solarized dark color theme(https://github.com/sellout/emacs-color-theme-solarized.git)
+;; add ELPA and MELPA package repos
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+	("melpa" . "http://melpa.org/packages/")))
+
+;; user solarized dark color theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/solarized_theme")
 (set-terminal-parameter nil 'background-mode 'dark)
 (set-frame-parameter nil 'background-mode 'dark)
