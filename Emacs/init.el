@@ -16,3 +16,6 @@
 
 ;; display line numbers
 (custom-set-variables '(global-display-line-numbers-mode t))
+
+;; Sort apropos result by relevance
+(setq apropos-sort-by-scores t)
