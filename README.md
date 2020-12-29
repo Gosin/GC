@@ -18,6 +18,8 @@ Personal configuration
 
 ## Emacs
 * Copy `init.el` to `~/.emacs.d/init.el`
+* Packages:
+  * Rainbow-Delimiters: https://github.com/Fanael/rainbow-delimiters
 
 
 ## Tmux
