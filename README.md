@@ -18,6 +18,10 @@ Personal configuration
 
 ## Emacs
 * Copy `init.el` to `~/.emacs.d/init.el`
+* Installed Packages
+  * solarized-theme
+  * magit
+  * rainbow-delimiters
 * Packages:
   * Rainbow-Delimiters: https://github.com/Fanael/rainbow-delimiters
 
