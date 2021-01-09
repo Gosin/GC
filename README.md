@@ -21,6 +21,7 @@ Personal configuration
 * Installed Packages
   * solarized-theme
   * magit
+  * cmake-mode
   * rainbow-delimiters
 * Packages:
   * Rainbow-Delimiters: https://github.com/Fanael/rainbow-delimiters
