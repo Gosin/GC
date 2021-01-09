@@ -1,3 +1,4 @@
+;; Gosin's Emacs Configuration 2021/01/09
 ;; add ELPA and MELPA package repos
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -14,8 +15,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-;; display line numbers
-(custom-set-variables '(global-display-line-numbers-mode t))
+(custom-set-variables
+ '(global-display-line-numbers-mode t) ; display line numbers
+ '(apropos-sort-by-scores t)) ; sort apropos results by relevance
 
-;; Sort apropos result by relevance
-(setq apropos-sort-by-scores t)
