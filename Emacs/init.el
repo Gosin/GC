@@ -19,3 +19,6 @@
  '(global-display-line-numbers-mode t) ; display line numbers
  '(apropos-sort-by-scores t)) ; sort apropos results by relevance
 
+;; store backup and autosave files to temporary directories
+(setq backup-director-alist
+      '((".*" . ,temporary-file-directory)))
