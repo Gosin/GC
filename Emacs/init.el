@@ -16,8 +16,10 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (custom-set-variables
- '(global-display-line-numbers-mode t) ; display line numbers
- '(apropos-sort-by-scores t)) ; sort apropos results by relevance
+ ;; score apropos results by relavance.
+ '(apropos-sort-by-scores t)
+ ;; show line numbers
+ '(global-display-line-numbers-mode t))
 
 ;; store backup and autosave files to temporary directories
 (setq backup-director-alist
