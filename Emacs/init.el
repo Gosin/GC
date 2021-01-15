@@ -18,5 +18,7 @@
 (custom-set-variables
  ;; score apropos results by relavance.
  '(apropos-sort-by-scores t)
- ;; show line numbers
- '(global-display-line-numbers-mode t))
+ ;; show line numbers.
+ '(global-display-line-numbers-mode t)
+ ;; save back up files to temporary directories.
+ '(backup-directory-alist `((".*" . ,temporary-file-directory))))
