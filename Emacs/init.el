@@ -22,5 +22,5 @@
  '(global-display-line-numbers-mode t))
 
 ;; store backup and autosave files to temporary directories
-(setq backup-director-alist
+(setq backup-directory-alist
       '((".*" . ,temporary-file-directory)))
