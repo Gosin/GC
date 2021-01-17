@@ -22,3 +22,11 @@
  '(global-display-line-numbers-mode t)
  ;; save back up files to temporary directories.
  '(backup-directory-alist `((".*" . ,temporary-file-directory))))
+
+;; remap keys for iTerm 2
+;; use cat -v or ctrl-v to show the sequence in iTerm 2.
+;; replace ^[ with \e
+(define-key input-decode-map "\e[1;9A" [M-up])
+(define-key input-decode-map "\e[1;9B" [M-down])
+(define-key input-decode-map "\e[1;9C" [M-right])
+(define-key input-decode-map "\e[1;9D" [M-left])
