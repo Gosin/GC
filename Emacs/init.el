@@ -30,3 +30,5 @@
 (define-key input-decode-map "\e[1;9B" [M-down])
 (define-key input-decode-map "\e[1;9C" [M-right])
 (define-key input-decode-map "\e[1;9D" [M-left])
+(define-key input-decode-map "\e[1;10C" [M-S-right])
+(define-key input-decode-map "\e[1;10D" [M-S-left])
