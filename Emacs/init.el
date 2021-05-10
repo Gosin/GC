@@ -1,8 +1,8 @@
 ;; Gosin's Emacs Configuration 2021/01/09
 ;; add ELPA and MELPA package repos
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-	("melpa" . "http://melpa.org/packages/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+	("melpa" . "https://melpa.org/packages/")))
 
 ;; user solarized dark color theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/solarized_theme")
@@ -29,7 +29,7 @@
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
  '(package-selected-packages
-   '(sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode)))
+   '(paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode)))
 
 ;; save org clock history across sessions
 (setq org-clock-persist 'history)
