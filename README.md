@@ -31,6 +31,11 @@ Personal configuration
 
   * `x` to execute.
 
+  * ```
+    ;; refresh package contents
+    package-refresh-content
+    ```
+
 * Installed Packages
 
   * paredit
@@ -46,7 +51,3 @@ Personal configuration
 ## Tmux
 * install tmux plugin manager.
   `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-
-  
-
-
