@@ -18,11 +18,27 @@ Personal configuration
 
 ## Emacs
 * Copy `init.el` to `~/.emacs.d/init.el`
+
+* Package Installation Instructions:
+
+  * ```elisp
+    M-x list-packages
+    ```
+
+  * `i` to mark for installation.
+
+  * `u` to unmark.
+
+  * `x` to execute.
+
 * Installed Packages
+
+  * paredit
   * solarized-theme
   * magit
   * cmake-mode
   * rainbow-delimiters
+
 * Packages:
   * Rainbow-Delimiters: https://github.com/Fanael/rainbow-delimiters
 
@@ -32,4 +48,5 @@ Personal configuration
   `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
   
+
 
