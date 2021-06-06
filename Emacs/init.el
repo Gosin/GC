@@ -4,7 +4,7 @@
 ;; load customization file
 (load custom-file)
 
-;; user solarized dark color theme
+;; use solarized dark color theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/solarized_theme")
 (set-terminal-parameter nil 'background-mode 'dark)
 (set-frame-parameter nil 'background-mode 'dark)
