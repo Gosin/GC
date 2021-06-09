@@ -10,6 +10,9 @@
 (set-frame-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
 
+;; enable directional window selection
+(windmove-default-keybindings)
+
 ;; enable paredit mode
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
