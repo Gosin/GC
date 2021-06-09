@@ -1,0 +1,1 @@
+cp ./*.el ~/.emacs.d/
