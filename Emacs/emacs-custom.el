@@ -6,6 +6,10 @@
  '(apropos-sort-by-scores t)
  '(backup-directory-alist `((".*" \, temporary-file-directory)))
  '(global-display-line-numbers-mode t)
+ '(ido-create-new-buffer 'always)
+ '(ido-enable-flex-matching t)
+ '(ido-everywhere t)
+ '(ido-mode 'both nil (ido))
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
  '(package-archives
