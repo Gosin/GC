@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(apropos-sort-by-scores t)
  '(backup-directory-alist `((".*" \, temporary-file-directory)))
+ '(fido-mode t)
  '(global-display-line-numbers-mode t)
  '(ido-create-new-buffer 'always)
  '(ido-enable-flex-matching t)
