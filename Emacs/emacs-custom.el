@@ -10,13 +10,16 @@
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(ido-mode 'both nil (ido))
+ '(indent-tabs-mode nil)
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
  '(package-archives
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode)))
+   '(paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
+ '(standard-indent 4)
+ '(tab-always-indent 'complete))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
