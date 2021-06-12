@@ -20,7 +20,7 @@
  '(package-selected-packages
    '(paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
  '(standard-indent 4)
- '(tab-always-indent 'complete)
+ '(tab-always-indent nil)
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
