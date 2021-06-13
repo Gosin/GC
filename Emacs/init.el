@@ -38,6 +38,7 @@
 
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
+;; ^ is Ctrl, ^[ is Alt/Meta
 ;; replace ^[ with \e
 (define-key input-decode-map "\e[1;9A" [M-up])
 (define-key input-decode-map "\e[1;9B" [M-down])
