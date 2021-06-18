@@ -36,6 +36,11 @@
 ;; set org-mode default capture note file
 (setq org-default-notes-file (concat org-directory "/note.org"))
 
+;; enable org-bullets-mode by default
+(require 'org-bullets)
+(add-hook 'org-mode-hook
+          (lambda () (org-bullets-mode 1)))
+
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
 ;; ^ is Ctrl, ^[ is Alt/Meta
