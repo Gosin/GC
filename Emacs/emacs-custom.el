@@ -12,6 +12,7 @@
  '(ido-everywhere t)
  '(ido-mode 'both nil (ido))
  '(indent-tabs-mode nil)
+ '(org-hide-emphasis-markers t)
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
  '(package-archives
