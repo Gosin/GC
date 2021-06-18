@@ -16,7 +16,8 @@
  '(org-log-into-drawer "LOGBOOK")
  '(package-archives
    '(("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")))
+     ("melpa" . "https://melpa.org/packages/")
+     ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
    '(org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
  '(standard-indent 4)
