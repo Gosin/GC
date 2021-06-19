@@ -12,6 +12,7 @@
  '(ido-everywhere t)
  '(ido-mode 'both nil (ido))
  '(indent-tabs-mode nil)
+ '(org-agenda-files '("~/Documents/Dropbox/Org/"))
  '(org-directory "~/Documents/Dropbox/Org")
  '(org-hide-emphasis-markers t)
  '(org-log-done 'time)
