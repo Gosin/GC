@@ -5,6 +5,11 @@
  ;; If there is more than one, they won't work right.
  '(apropos-sort-by-scores t)
  '(backup-directory-alist `((".*" \, temporary-file-directory)))
+ '(dired-clean-confirm-killing-deleted-buffers nil nil nil "don't ask whether to kill")
+ '(dired-dwim-target t nil nil "guess target destination")
+ '(dired-listing-switches "-alt" nil nil "Set flags as show hidden, long listing, sort by date")
+ '(dired-recursive-copies 'always nil nil "copy recursively without asking")
+ '(dired-recursive-deletes 'top nil nil "delete recursively and only confirm top-level directories")
  '(fido-mode t)
  '(global-display-line-numbers-mode t)
  '(ido-create-new-buffer 'always)
