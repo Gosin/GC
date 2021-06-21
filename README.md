@@ -35,18 +35,10 @@ Personal configuration
     ;; refresh package contents
     package-refresh-content
     ```
-
-* Installed Packages
-
-  * paredit
-  * solarized-theme
-  * magit
-  * cmake-mode
-  * rainbow-delimiters
-
-* Packages:
-  * Rainbow-Delimiters: https://github.com/Fanael/rainbow-delimiters
-
+## GPG Conf
+  * Specify `pinentry`:
+    `pinentry-program path/to/pinentry`
+    https://stackoverflow.com/questions/39494631/gpg-failed-to-sign-the-data-fatal-failed-to-write-commit-object-git-2-10-0
 
 ## Tmux
 * install tmux plugin manager.
