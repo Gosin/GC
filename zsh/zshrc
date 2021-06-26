@@ -101,5 +101,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="/usr/local/bin/vim"
 
-# specify GPG usage
+# Make gpg-agent available for any shell invocation.
 export GPG_TTY=$(tty)
