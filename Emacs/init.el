@@ -36,6 +36,9 @@
 ;; set org-mode default capture note file
 (setq org-default-notes-file (concat org-directory "/note.org"))
 
+;; enable org-tempo by default
+(require 'org-tempo)
+
 ;; enable org-bullets-mode by default
 (require 'org-bullets)
 (add-hook 'org-mode-hook
