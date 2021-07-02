@@ -22,6 +22,7 @@
  '(indent-tabs-mode nil)
  '(org-agenda-files '("~/Documents/Dropbox/Org/"))
  '(org-agenda-include-diary t)
+ '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Documents/Dropbox/Org/note.org")
  '(org-directory "~/Documents/Dropbox/Org")
  '(org-hide-emphasis-markers t)
