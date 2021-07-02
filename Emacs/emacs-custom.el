@@ -4,8 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(apropos-sort-by-scores t)
- '(auto-save-file-name-transforms '(("\".*\"" ",temporary-file-directory" t)))
- '(backup-directory-alist '(("\".*\"" . ",temporary-file-directory")))
  '(dired-clean-confirm-killing-deleted-buffers nil nil nil "don't ask whether to kill")
  '(dired-dwim-target t nil nil "guess target destination")
  '(dired-listing-switches "-alt" nil nil "Set flags as show hidden, long listing, sort by date")
