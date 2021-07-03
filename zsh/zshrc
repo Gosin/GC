@@ -4,7 +4,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/gosin/.oh-my-zsh"
 # Set homebrew path
-export PATH="/usr/local/sbin:$PATH"
+path+=('/usr/local/bin')
+path+=('/usr/local/sbin')
+path+=('/usr/local/opt/llvm/bin')
+export PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
