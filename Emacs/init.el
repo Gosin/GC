@@ -24,6 +24,12 @@
 ;; enable rainbow-delimiter mode
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; enable lsp-server for C/C++ via eglot package
+(require 'eglot)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
+
 ;; define three useful commands(from org guide)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
