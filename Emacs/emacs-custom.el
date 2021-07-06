@@ -35,6 +35,16 @@
      (shell . t)
      (sql . t)
      (sqlite . t)))
+ '(org-capture-templates
+   '(("b" "添加一本正在阅读的图书" entry
+      (file+headline "~/Documents/Dropbox/Org/books.org" "Bookshelf")
+      "* READING %?%U" :prepend t :empty-lines 1)
+     ("t" "Add an TODO item" entry
+      (file "~/Documents/Dropbox/Org/note.org")
+      "* TODO %?%U%i" :prepend t :empty-lines 1)
+     ("w" "Add a Wyatt task" entry
+      (file "~/Documents/Dropbox/Org/wyatterp_wolfram.org")
+      "* TODO %?" :prepend t :empty-lines-after 1)))
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Documents/Dropbox/Org/note.org")
  '(org-directory "~/Documents/Dropbox/Org")
