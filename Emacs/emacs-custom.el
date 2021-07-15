@@ -44,7 +44,7 @@
       "* TODO %?%U%i" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("w" "Add a Wyatt task" entry
       (file "~/Documents/Dropbox/Org/wyatterp_wolfram.org")
-      "* TODO %?" :prepend t :empty-lines-before 1 :empty-lines-after 1)))
+      "* TODO %?" :empty-lines-before 1 :empty-lines-after 1)))
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Documents/Dropbox/Org/note.org")
  '(org-directory "~/Documents/Dropbox/Org")
