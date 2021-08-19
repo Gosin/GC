@@ -1,4 +1,8 @@
-;; Gosin's Emacs Configuration 2021/06/04
+;; Gosin's Emacs Configuration 2021/08/20
+
+;; start emacs as a server
+(server-start)
+
 ;; specify file path of customization
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 ;; load customization file
