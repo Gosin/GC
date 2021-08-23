@@ -9,10 +9,15 @@
 (load custom-file)
 
 ;; use solarized dark color theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/solarized_theme")
-(set-terminal-parameter nil 'background-mode 'dark)
-(set-frame-parameter nil 'background-mode 'dark)
-(load-theme 'solarized t)
+(load-theme 'solarized-dark t)
+;; make the fringe stand out from the background
+(setq solarized-distinct-fringe-background t)
+;; Don't change the font for some headings and titles
+(setq solarized-use-variable-pitch nil)
+;; make the modeline high contrast
+(setq solarized-high-contrast-mode-line t)
+;; Change the size of markdown-mode headlines (off by default)
+(setq solarized-scale-markdown-headlines t)
 
 ;; enable directional window selection
 (windmove-default-keybindings)
