@@ -26,6 +26,8 @@
  '(ido-everywhere t)
  '(ido-mode 'both nil (ido))
  '(indent-tabs-mode nil)
+ '(latex-run-command "pdflatex")
+ '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
  '(org-agenda-files '("~/Documents/Dropbox/Org/"))
  '(org-agenda-include-diary t)
  '(org-babel-load-languages
@@ -63,7 +65,7 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(eglot ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
+   '(tree-sitter-indent tree-sitter lua-mode glsl-mode eglot ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4))
