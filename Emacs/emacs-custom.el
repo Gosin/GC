@@ -60,6 +60,7 @@
  '(org-hide-emphasis-markers t)
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
+ '(org-pretty-entities t)
  '(org-refile-targets '((org-agenda-files :maxlevel . 6)))
  '(package-archives
    '(("gnu" . "https://elpa.gnu.org/packages/")
