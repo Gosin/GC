@@ -25,7 +25,7 @@
  '(ido-create-new-buffer 'always)
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
- '(ido-mode 'both nil (ido))
+ '(ido-mode 'both nil (ido) "Enable ido-mode for all buffers and files")
  '(indent-tabs-mode nil)
  '(latex-run-command "pdflatex")
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
@@ -67,7 +67,7 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(command-log-mode org org-contrib which-key lsp-mode tree-sitter-langs tree-sitter lua-mode glsl-mode ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
+   '(flymake-shellcheck flycheck-ledger flycheck-clang-tidy flycheck-clang-analyzer flycheck command-log-mode org org-contrib which-key lsp-mode tree-sitter-langs tree-sitter lua-mode glsl-mode ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode magit company cmake-mode))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4))
