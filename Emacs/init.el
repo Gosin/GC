@@ -3,6 +3,12 @@
 ;; start emacs as a server
 (server-start)
 
+;; Set up pin entry for signing commits
+;; Not sure what's the difference between epg-pinentry-mode and epa-pinentry-mode
+;; They(or one of them) need to be set to 'loopback
+;; Start the server to make it working (https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources)
+(pinentry-start)
+
 ;; specify file path of customization
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 ;; load customization file
