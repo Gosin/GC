@@ -6,6 +6,7 @@
  '(apropos-sort-by-scores t)
  '(backup-directory-alist '(("." . "~/.emacs_backups")))
  '(column-number-mode t)
+ '(debug-on-error t nil nil "Turn on this flag to help learning emacs.")
  '(dired-clean-confirm-killing-deleted-buffers nil nil nil "don't ask whether to kill")
  '(dired-dwim-target t nil nil "guess target destination")
  '(dired-listing-switches "-alt" nil nil "Set flags as show hidden, long listing, sort by date")
