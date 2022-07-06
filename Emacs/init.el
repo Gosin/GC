@@ -7,6 +7,10 @@
 ;; Start the server to make it working
 (pinentry-start)
 
+;; Import shell environment to Emacs shell
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; specify file path of customization
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 ;; load customization file
