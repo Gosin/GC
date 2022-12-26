@@ -35,6 +35,7 @@
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
  '(org-agenda-files '("~/Documents/Dropbox/Org/"))
  '(org-agenda-include-diary t)
+ '(org-archive-save-context-info '(time file category todo itags olpath))
  '(org-babel-load-languages
    '((emacs-lisp . t)
      (C . t)
@@ -60,7 +61,7 @@
       "* TODO %?" :empty-lines-after 1)))
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Documents/Dropbox/Org/note.org")
- '(org-directory "~/Documents/Dropbox/Org")
+ '(org-directory "~/Documents/Org")
  '(org-hide-emphasis-markers t)
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
