@@ -33,7 +33,7 @@
  '(indent-tabs-mode nil)
  '(latex-run-command "pdflatex")
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
- '(org-agenda-files '("~/Documents/Dropbox/Org/"))
+ '(org-agenda-files '("~/Documents/Org/"))
  '(org-agenda-include-diary t)
  '(org-archive-save-context-info '(time file category todo itags olpath))
  '(org-babel-load-languages
