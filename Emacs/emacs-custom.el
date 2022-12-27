@@ -33,7 +33,8 @@
  '(indent-tabs-mode nil)
  '(latex-run-command "pdflatex")
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
- '(org-agenda-files '("~/Documents/Org/"))
+ '(org-agenda-files
+   '("/Users/gosin/Documents/Org/TAOCP.org" "/Users/gosin/Documents/Org/gosin.org" "/Users/gosin/Documents/Org/home.org" "/Users/gosin/Documents/Org/note.org" "/Users/gosin/Documents/Org/wyatterp_wolfram.org"))
  '(org-agenda-include-diary t)
  '(org-archive-save-context-info '(time file category todo itags olpath))
  '(org-babel-load-languages
@@ -70,6 +71,7 @@
  '(org-pretty-entities t)
  '(org-refile-allow-creating-parent-nodes 'confirm)
  '(org-refile-targets '((org-agenda-files :maxlevel . 6)))
+ '(org-use-sub-superscripts '{})
  '(package-archives
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
