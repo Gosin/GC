@@ -65,6 +65,8 @@
  '(org-hide-emphasis-markers t)
  '(org-log-done 'time)
  '(org-log-into-drawer "LOGBOOK")
+ '(org-modules
+   '(ol-bbdb ol-bibtex org-crypt ol-docview ol-doi ol-eww ol-gnus org-habit org-id ol-info ol-irc ol-mhe org-protocol ol-rmail org-tempo ol-w3m ol-eshell ol-git-link org-mac-link org-notify))
  '(org-pretty-entities t)
  '(org-refile-allow-creating-parent-nodes 'confirm)
  '(org-refile-targets '((org-agenda-files :maxlevel . 6)))
