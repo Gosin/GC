@@ -51,14 +51,20 @@
      (sql . t)
      (sqlite . t)))
  '(org-capture-templates
-   '(("b" "添加一本正在阅读的图书" entry
-      (file+headline "~/Documents/Dropbox/Org/books.org" "Bookshelf")
+   '(("m" "添加一部看过的电影" entry
+      (file+headline "~/Documents/Org/movies.org" "Watched")
+      "* %? %U" prepend t)
+     ("v" "添加一部正在看的电视剧" entry
+      (file+headline "~/Documents/Org/movies.org" "Watching")
+      "* %? %U" empty-lines-after 1 :prepend t)
+     ("b" "添加一本正在阅读的图书" entry
+      (file+headline "~/Documents/Org/books.org" "Bookshelf")
       "* READING %?%U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("t" "Add an TODO item" entry
-      (file "~/Documents/Dropbox/Org/note.org")
+      (file "~/Documents/Org/note.org")
       "* TODO %?%U%i" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("w" "Add a Wyatt task" entry
-      (file+headline "~/Documents/Dropbox/Org/wyatterp_wolfram.org" "Backlogs")
+      (file+headline "~/Documents/Org/wyatterp_wolfram.org" "Backlogs")
       "* TODO %?" :empty-lines-after 1)))
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/Documents/Dropbox/Org/note.org")
