@@ -52,13 +52,13 @@
      (sqlite . t)))
  '(org-capture-templates
    '(("m" "添加一部看过的电影" entry
-      (file+headline "~/Documents/Org/movies.org" "Watched")
+      (file "~/Documents/Org/movies.org")
       "* %? %U" prepend t)
      ("v" "添加一部正在看的电视剧" entry
-      (file+headline "~/Documents/Org/movies.org" "Watching")
-      "* %? %U" empty-lines-after 1 :prepend t)
+      (file "~/Documents/Org/movies.org")
+      "* %? %U" :prepend t empty-lines-after 1)
      ("b" "添加一本正在阅读的图书" entry
-      (file+headline "~/Documents/Org/books.org" "Bookshelf")
+      (file "~/Documents/Org/movies.org")
       "* READING %?%U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("t" "Add an TODO item" entry
       (file "~/Documents/Org/note.org")
