@@ -58,7 +58,7 @@
       (file "~/Documents/Org/movies.org")
       "* %? %U" :prepend t empty-lines-after 1)
      ("b" "添加一本正在阅读的图书" entry
-      (file "~/Documents/Org/movies.org")
+      (file "~/Documents/Org/books.org")
       "* READING %?%U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("t" "Add an TODO item" entry
       (file "~/Documents/Org/note.org")
