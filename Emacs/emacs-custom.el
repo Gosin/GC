@@ -51,15 +51,32 @@
      (sql . t)
      (sqlite . t)))
  '(org-capture-templates
-   '(("m" "添加一部看过的电影" entry
+   '(("b" "添加一本图书")
+     ("m" "添加一部影视作品")
+     ("mt" "添加一部想看的影视作品" entry
       (file "~/Documents/Org/movies.org")
-      "* %? %U" prepend t)
-     ("v" "添加一部正在看的电视剧" entry
+      "* TODO %?
+  %U" :prepend t)
+     ("md" "添加一部看过的电影" entry
       (file "~/Documents/Org/movies.org")
-      "* %? %U" :prepend t empty-lines-after 1)
-     ("b" "添加一本正在阅读的图书" entry
+      "* DONE %?
+  %U")
+     ("mi" "添加一部正在看的电视剧" entry
+      (file "~/Documents/Org/movies.org")
+      "* WATCHING %?
+  %U" :prepend t empty-lines-after 1)
+     ("bd" "添加一本读过的图书" entry
       (file "~/Documents/Org/books.org")
-      "* READING %?%U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
+      "* DONE %?
+  %U")
+     ("bt" "添加一本想读的图书" entry
+      (file "~/Documents/Org/books.org")
+      "* TODO %?
+  %U")
+     ("bi" "添加一本正在阅读的图书" entry
+      (file "~/Documents/Org/books.org")
+      "* READING %?
+  %U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("t" "Add an TODO item" entry
       (file "~/Documents/Org/note.org")
       "* TODO %?%U%i" :prepend t :empty-lines-before 1 :empty-lines-after 1)
