@@ -11,6 +11,17 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
+;; Utilize use-package to make sure pacakges are installed
+(condition-case nil
+    (require 'use-package)
+  (file-error
+   (require 'package)
+   (package-initialize)
+   (package-refresh-contents)
+   (package-install 'use-package)
+   (setq use-package-always-ensure t)
+   (require 'use-package)))
+
 ;; specify file path of customization
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 ;; load customization file
