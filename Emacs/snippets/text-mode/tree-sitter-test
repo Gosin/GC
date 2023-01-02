@@ -1,0 +1,13 @@
+# contributor: Gosin <canling0@gmail.com>
+# name: tree-sitter grammar test template
+# key: tstest
+# --
+============================================================
+$1
+============================================================
+
+$2
+
+---
+
+(source_file$0)
