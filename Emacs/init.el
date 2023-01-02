@@ -61,6 +61,9 @@
 (add-hook 'org-mode-hook
           (lambda () (org-bullets-mode 1)))
 
+;; Replace dabbrev with hippie-expand
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
+
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
 ;; ^ is Ctrl, ^[ is Alt/Meta
