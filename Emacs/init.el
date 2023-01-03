@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2021/08/20
+;; Gosin's Emacs Configuration 2023/01/02
 
 ;; start emacs as a server
 (server-start)
@@ -44,7 +44,8 @@
 ;; enable paredit mode
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+;; TODO: Adding this hook prevents expression from evaluating
+;; (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook #'enable-paredit-mode)
