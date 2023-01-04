@@ -79,6 +79,9 @@
 ;; Replace dabbrev with hippie-expand
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
+;; Use js2-mode for javascript
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
 ;; ^ is Ctrl, ^[ is Alt/Meta
