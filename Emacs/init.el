@@ -79,6 +79,15 @@
 ;; Use js2-mode for javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
+
+;; Config lilypond (Install lilypond from homebrew first)
+;; Add lilypond directory to load-path
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/lilypond")
+(autoload 'LilyPond-mode "lilypond-mode" "LilyPond Editing Mode" t)
+(add-to-list 'auto-mode-alist '("\\.ly\\'" . LilyPond-mode))
+(add-to-list 'auto-mode-alist '("\\.ily\\'" . LilyPond-mode))
+(add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
+
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
 ;; ^ is Ctrl, ^[ is Alt/Meta
