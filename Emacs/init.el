@@ -22,9 +22,6 @@
    (setq use-package-always-ensure t)
    (require 'use-package)))
 
-;; Set keychain environment
-(keychain-refresh-environment)
-
 ;; specify file path of customization
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 ;; load customization file
