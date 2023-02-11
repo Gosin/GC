@@ -88,6 +88,10 @@
 (add-to-list 'auto-mode-alist '("\\.ily\\'" . LilyPond-mode))
 (add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
 
+;; Load yasnippets, enable yas-minor-mode for other modes to use them.
+(require 'yasnippet)
+(yas-reload-all)
+
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
 ;; ^ is Ctrl, ^[ is Alt/Meta
