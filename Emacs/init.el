@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2023/01/02
+;; Gosin's Emacs Configuration 2023/03/04
 
 ;; start emacs as a server
 (server-start)
@@ -91,6 +91,9 @@
 ;; Load yasnippets, enable yas-minor-mode for other modes to use them.
 (require 'yasnippet)
 (yas-reload-all)
+
+;; Load personal library
+(load-file "~/.emacs.d/goer.el")
 
 ;; remap keys for iTerm 2
 ;; use cat -v or ctrl-v to show the sequence in iTerm 2.
