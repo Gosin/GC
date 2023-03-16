@@ -21,6 +21,10 @@
  '(display-time-interval 1)
  '(display-time-mode t nil nil "Display clock time in mode line.")
  '(epg-pinentry-mode 'loopback)
+ '(eshell-mode-hook
+   '(tramp-eshell-directory-change
+     (lambda nil
+       (setenv "TERM" "xterm-256color"))))
  '(exec-path
    '("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/Library/TeX/texbin" "/usr/local/opt/llvm/bin/" "/Users/gosin/.cargo/bin" nil))
  '(fido-mode t)
@@ -113,4 +117,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:height 140 :width normal :family "Berkeley Mono"))))
+ '(ansi-color-blue ((t (:background "DeepSkyBlue1" :foreground "DeepSkyBlue1"))))
  '(cursor ((t (:background "yellow1" :foreground "#002b36" :inverse-video t)))))
