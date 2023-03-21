@@ -6,8 +6,8 @@
   (if (and (stringp directory)
            (directory-name-p directory))
       (progn
-        (cd directory)
         (eshell)
+        (cd directory)
         (if (stringp name)
             (rename-buffer name)))))
 
