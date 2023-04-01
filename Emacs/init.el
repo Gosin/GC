@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2023/03/04
+;; Gosin's Emacs Configuration 2023/04/01
 
 ;; start emacs as a server
 (server-start)
