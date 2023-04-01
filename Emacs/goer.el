@@ -18,7 +18,6 @@
     (split-window-right)
     (split-window-below)
     (create-shell "/Users/gosin/Garage/s3s/" "splatoon")
-    (create-shell "/Users/gosin/Garage/scala/" "scala-shell")
     (create-shell "/Users/gosin/Garage/cppTest/" "cpp-shell")
     (create-shell "/Users/gosin/Garage/tree-sitter-wolfram/" "wolfram-shell")
     (create-shell "/Users/gosin/Garage/rust_concurrency/" "rust-shell")
