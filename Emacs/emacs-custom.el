@@ -21,10 +21,7 @@
  '(display-time-interval 1)
  '(display-time-mode t nil nil "Display clock time in mode line.")
  '(epg-pinentry-mode 'loopback)
- '(eshell-mode-hook
-   '(tramp-eshell-directory-change
-     (lambda nil
-       (setenv "TERM" "xterm-256color"))))
+ '(eshell-mode-hook '((lambda nil (setenv "TERM" "xterm-256color"))))
  '(exec-path
    '("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/Library/TeX/texbin" "/usr/local/opt/llvm/bin/" "/Users/gosin/.cargo/bin" nil))
  '(fido-mode t)
@@ -59,28 +56,22 @@
      ("m" "添加一部影视作品")
      ("mt" "添加一部想看的影视作品" entry
       (file "~/Documents/Org/movies.org")
-      "* TODO %?
-  %U" :prepend t)
+      "* TODO %?\12  %U" :prepend t)
      ("md" "添加一部看过的电影" entry
       (file "~/Documents/Org/movies.org")
-      "* DONE %?
-  %U")
+      "* DONE %?\12  %U")
      ("mi" "添加一部正在看的电视剧" entry
       (file "~/Documents/Org/movies.org")
-      "* WATCHING %?
-  %U" :prepend t empty-lines-after 1)
+      "* WATCHING %?\12  %U" :prepend t empty-lines-after 1)
      ("bd" "添加一本读过的图书" entry
       (file "~/Documents/Org/books.org")
-      "* DONE %?
-  %U")
+      "* DONE %?\12  %U")
      ("bt" "添加一本想读的图书" entry
       (file "~/Documents/Org/books.org")
-      "* TODO %?
-  %U")
+      "* TODO %?\12  %U")
      ("bi" "添加一本正在阅读的图书" entry
       (file "~/Documents/Org/books.org")
-      "* READING %?
-  %U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
+      "* READING %?\12  %U" :prepend t :empty-lines-before 1 :empty-lines-after 1)
      ("t" "Add an TODO item" entry
       (file "~/Documents/Org/note.org")
       "* TODO %?%U%i" :prepend t :empty-lines-before 1 :empty-lines-after 1)
