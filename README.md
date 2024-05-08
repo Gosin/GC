@@ -1,41 +1,29 @@
 # Configurations for tools used by Gosin
 Personal configuration
 
+# Rime
+
+* Copy `rime/double_pinyin_flypy.schema.yaml` to rime config directory to add 小鹤双拼.
+  * https://github.com/rime/rime-double-pinyin
+* Copy `rime/default.custom.yaml` to rime config directory to update input methods.
+
 ## Emacs
-* Copy `init.el` to `~/.emacs.d/init.el`
 
-* Package Installation Instructions:
+* Copy `init.el` , `emacs-custom.el`, and `goer.el` to  default config directory`~/.emacs.d/`
 
-  * ```elisp
-    M-x list-packages
-    ```
+* Install packages for the first time.
 
-  * `i` to mark for installation.
-
-  * `u` to unmark.
-
-  * `x` to execute.
-
-  * ```
-    ;; refresh package contents
-    package-refresh-content
-    ```
-## Vim
-* install Vundle ```git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim```
-* run **deployConfigs** to apply configs.
-* install **Node.js** with **standard**, **eslint**, **htmlhint**.
-* install extra plugins to enable **eslint** with **standard**
-  ```npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node```
-* Add ```.eslintrc``` as needed.
-* YouCompleteMe plugin installation:
-  * C-Family completetion: Install `CMake` . Add `--clang-completer` and `--clangd-completer`(https://clangd.llvm.org/installation.html) .
-  * Add softlink of `clangd` and `clang-tidy` to user binary directory.
-  * Javascript completion: Install `Node.js` and `npm`. Add `--ts-completer`.
-  * Rust completion: Install `Rust`. Add `--rust-completer`.
-* Adding clang-format and clang-tidy to the environment.
-  * `ln -s path/to/clang-format /usr/local/bin/clang-format`
-
-## GPG Conf
+  * From: https://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+  ```
+  (custom-set-variables
+  '(package-selected-packages
+      '(org js2-mode yasnippet use-package org-mac-link org-notify scala-mode yaml-mode exec-path-from-shell magit flymake-shellcheck flycheck-ledger flycheck-clang-tidy flycheck-clang-analyzer flycheck command-log-mode which-key tree-sitter-langs tree-sitter lua-mode glsl-mode ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode company cmake-mode)))
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (package-install-selected-packages)
+  ```
+## GPG Configuration
   * Specify `pinentry`:
     `pinentry-program path/to/pinentry`
     https://stackoverflow.com/questions/39494631/gpg-failed-to-sign-the-data-fatal-failed-to-write-commit-object-git-2-10-0
@@ -43,3 +31,4 @@ Personal configuration
 ## Tmux
 * install tmux plugin manager.
   `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+  * Install `resurrect` and `sensible` plugins.
