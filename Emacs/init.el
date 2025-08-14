@@ -1,102 +1,180 @@
-;; Gosin's Emacs Configuration 2023/04/01
+;; Gosin's Emacs Configuration 2025/08/13
 
-;; start emacs as a server
-(server-start)
+;; ------- Basics / Packages -------
+(setq inhibit-startup-messages t)
 
-;; Set up pin entry for signing commits (See EasyPG Assistant for more information)
-;; Start the server to make it working
-(pinentry-start)
+(dolist (f '(mode-line mode-line-inactive header-line))
+  (ignore-errors (set-face-attribute f nil :box nil)))
 
-;; Import shell environment to Emacs shell
-(when (memq window-system '(mac ns x))
+(require 'package)
+(setq package-archives
+      '(("gnu"      . "https://elpa.gnu.org/packages/")
+        ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
+        ("melpa"    . "https://melpa.org/packages/")))
+
+(unless package--initialized (package-initialize))
+(unless package-archive-contents (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+;; ------ Server ------
+(use-package server
+  :config
+  (unless (server-running-p) (server-start)))
+
+;; ------- Custom file -------
+(setq custom-file (locate-user-emacs-file "emacs-custom.el"))
+(when (file-exists-p custom-file) (load custom-file))
+
+;; ------ Install package ------
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
+
+;; ------- OS detection helpers -------
+(defconst IS-MAC    (eq system-type 'darwin))
+(defconst IS-LINUX  (eq system-type 'gnu/linux))
+(defconst IS-WIN    (eq system-type 'windows-nt))
+
+;; ------- Environment on macOS/*nix (GUI) -------
+(use-package exec-path-from-shell
+  :if (and (display-graphic-p) (not IS-WIN))
+  :init
+  (setq exec-path-from-shell-variables '("PATH" "MANPATH" "GPG_TTY"))
+  :config
   (exec-path-from-shell-initialize))
 
-;; Utilize use-package to make sure pacakges are installed
-(condition-case nil
-    (require 'use-package)
-  (file-error
-   (require 'package)
-   (package-initialize)
-   (package-refresh-contents)
-   (package-install 'use-package)
-   (setq use-package-always-ensure t)
-   (require 'use-package)))
+;; ------- GPG pinentry -------
+(use-package pinentry
+  :config
+  (pinentry-start))                     ; On macOS, ensure 'pinentry-mac' is installed; On Windows use Gpg4win
 
-;; specify file path of customization
-(setq custom-file "~/.emacs.d/emacs-custom.el")
-;; load customization file
-(load custom-file)
+;; ------- Theme with safe fallback -------
+;; Ef themes (by Protesilaos)
+(use-package ef-themes
+  :ensure t
+  :init
+  ;; Optional: define a quick toggle pair (pick any two you like)
+  (setq ef-themes-to-toggle '(ef-dark ef-night))  ;; ef-night is near‑black (nice on OLED)
+  ;; Optional polish
+  (setq ef-themes-mixed-fonts t                 ; use variable pitch for prose
+        ef-themes-variable-pitch-ui t)          ; variable-pitch UI where appropriate
+  :config
+  ;; Avoid mixing with any previously enabled theme (prevents odd faces)
+  (mapc #'disable-theme custom-enabled-themes)
+  (load-theme 'ef-dark :no-confirm))
 
-;; use solarized dark color theme
-(load-theme 'solarized-dark t)
-;; make the fringe stand out from the background
-(setq solarized-distinct-fringe-background t)
-;; Don't change the font for some headings and titles
-(setq solarized-use-variable-pitch nil)
-;; make the modeline high contrast
-(setq solarized-high-contrast-mode-line t)
-;; Change the size of markdown-mode headlines (off by default)
-(setq solarized-scale-markdown-headlines t)
+;; Tweak Org/outline heading sizes (example)
+(setq ef-themes-headings
+      '((0 . (bold 1.2))
+        (1 . (bold 1.15))
+        (2 . (bold 1.10))
+        (3 . (bold 1.05))
+        (t . (regular 1.0))))
 
-;; enable directional window selection
-(windmove-default-keybindings)
+(load-theme 'ef-night :no-confirm)
 
-;; enable paredit mode
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-;; TODO: Adding this hook prevents expression from evaluating
-;; (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook #'enable-paredit-mode)
+;; If you previously had boxed modelines, make sure they’re off:
+(dolist (f '(mode-line mode-line-inactive header-line))
+  (ignore-errors (set-face-attribute f nil :box nil)))
 
-;; enable rainbow-delimiter mode
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;; Optional: bind a toggle key
+(global-set-key (kbd "C-c t") #'ef-themes-toggle)
 
-;; define three useful commands(from org guide)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
+;; ------ Window navigation -------
+;; Use Shift+Meta+Arrows to avoid Org shift-selection conflicts
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings 'meta))
 
-;; save org clock history across sessions
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
+;; ------ Paredit / delimiters -------
+(use-package paredit
+  :hook ((emacs-lisp-mode lisp-mode lisp-interaction-mode scheme-mode) . enable-paredit-mode))
 
-;; set org-mode default capture note file
-(setq org-default-notes-file (concat org-directory "/note.org"))
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
-;; enable org-tempo by default
-(require 'org-tempo)
+;; ------- Org basics -------
+(use-package org
+  :init
+  (setq org-directory (or (bound-and-true-p org-directory)
+                          (expand-file-name "org" (or (getenv "ORG_HOME")
+                                                      (expand-file-name "~")))))
+  :config
+  ;; Keybindings
+  (global-set-key (kbd "C-c l") #'org-store-link)
+  (global-set-key (kbd "C-c a") #'org-agenda)
+  (global-set-key (kbd "C-c c") #'org-capture)
 
-;; enable org-bullets-mode by default
-(require 'org-bullets)
-(add-hook 'org-mode-hook
-          (lambda () (org-bullets-mode 1)))
+  ;; Clock persistence
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
 
-;; Replace dabbrev with hippie-expand
-(global-set-key [remap dabbrev-expand] 'hippie-expand)
+  ;; Capture notes default
+  (let ((notes (expand-file-name "note.org" org-directory)))
+    (unless (file-exists-p notes)
+      (with-temp-file notes))
+    (setq org-default-notes-file notes))
 
-;; Use js2-mode for javascript
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  ;; Enable org-tempo for <s TAB etc.
+  (require 'org-tempo))
 
+;; Nicer bullets
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
 
-;; Config lilypond (Install lilypond from homebrew first)
-;; Add lilypond directory to load-path
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/lilypond")
-(autoload 'LilyPond-mode "lilypond-mode" "LilyPond Editing Mode" t)
-(add-to-list 'auto-mode-alist '("\\.ly\\'" . LilyPond-mode))
-(add-to-list 'auto-mode-alist '("\\.ily\\'" . LilyPond-mode))
-(add-hook 'LilyPond-mode-hook (lambda () (turn-on-font-lock)))
+(use-package ob-js      :ensure t)
+(use-package ob-css     :ensure t)
+(use-package ob-ledger  :ensure t)
+(use-package ob-sqlite  :ensure t)
+(use-package org-contrib :after org)
 
-;; Load yasnippets, enable yas-minor-mode for other modes to use them.
-(require 'yasnippet)
-(yas-reload-all)
+;; ------ Hippie expand -------
+(global-set-key [remap dabbrev-expand] #'hippie-expand)
 
-;; Load personal library
-(load-file "~/.emacs.d/goer.el")
+;; ------- JS Mode: prefer tree-sitter on Emacs 29+, else js2 -------
+(cond
+ ((boundp 'js-ts-mode)                  ; Emacs 29+
+  (add-to-list 'major-mode-remap-alist '(javascript-mode . js-ts-mode)))
+ (t
+  (use-package js2-mode
+    :mode "\\.js\\'")))
 
-;; remap keys for iTerm 2
-;; use cat -v or ctrl-v to show the sequence in iTerm 2.
-;; ^ is Ctrl, ^[ is Alt/Meta
-;; replace ^[ with \e
-;; Terminal-based Emacs didn't handle key bindings properly, use GUI-based Emacs onwards
+;; ------ Lilypond: add whichever path exists
+(let* ((cands (list "/opt/homebrew/share/emacs/site-lisp/lilypond" ; macOS M chip
+                    "/usr/local/share/emacs/site-lisp/lilypond"   ; macOS Intel / Some Linux
+                    "/usr/share/emacs/site-lisp/lilypond"))       ; Linux
+       (lpdir (seq-find #'file-directory-p cands)))
+  (when lpdir
+    (add-to-list 'load-path lpdir)
+    (autoload 'LilyPond-mode "lilypond-mode" "LilyPond Editing Mode" t)
+    (add-to-list 'auto-mode-alist '("\\.ily?\\'" . LilyPond-mode))
+    (add-hook 'LilyPond-mode-hook #'turn-on-font-lock)))
+
+;; ------ Yasnippet ------
+(use-package yasnippet
+  :hook ((prog-mode text-mode conf-mode) . yas-minor-mode)
+  :config (yas-reload-all))
+(use-package yasnippet-snippets :after yasnippet)
+
+;; ------ Load personal library (only if present) ------
+(let ((goer (expand-file-name "goer.el" user-emacs-directory)))
+  (when (file-exists-p goer) (load-file goer)))
+
+;; ------ macOS/Windows optional key modifiers ------
+(when IS-MAC
+  (setq mac-option-modifier 'meta
+        mac-command-modifier 'super))
+
+(when IS-WIN
+  (setq w32-pass-rwindow-to-system nil
+        w32-rwindow-modifier 'super))
+
+;; ------ Notes on terminal keybindings ------
+;; For terminal emacs, prefer using GUI where possible for richer key events.
+
+(dolist (f '(mode-line mode-line-inactive header-line))
+  (when (facep f)
+    (ignore-errors (set-face-attribute f nil :box nil))))
