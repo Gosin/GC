@@ -49,6 +49,7 @@
 
 ;; ------- GPG pinentry -------
 (use-package pinentry
+  :if IS-MAC
   :config
   (pinentry-start))                     ; On macOS, ensure 'pinentry-mac' is installed; On Windows use Gpg4win
 
@@ -58,14 +59,14 @@
   :ensure t
   :init
   ;; Optional: define a quick toggle pair (pick any two you like)
-  (setq ef-themes-to-toggle '(ef-dark ef-night))  ;; ef-night is near‑black (nice on OLED)
+  (setq ef-themes-to-toggle '(ef-dark ef-night))  ;; ef-night is near black (nice on OLED)
   ;; Optional polish
   (setq ef-themes-mixed-fonts t                 ; use variable pitch for prose
         ef-themes-variable-pitch-ui t)          ; variable-pitch UI where appropriate
   :config
   ;; Avoid mixing with any previously enabled theme (prevents odd faces)
   (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'ef-dark :no-confirm))
+  (load-theme 'ef-night :no-confirm))
 
 ;; Tweak Org/outline heading sizes (example)
 (setq ef-themes-headings
@@ -74,8 +75,6 @@
         (2 . (bold 1.10))
         (3 . (bold 1.05))
         (t . (regular 1.0))))
-
-(load-theme 'ef-night :no-confirm)
 
 ;; If you previously had boxed modelines, make sure they’re off:
 (dolist (f '(mode-line mode-line-inactive header-line))
@@ -113,6 +112,9 @@
   (org-clock-persistence-insinuate)
 
   ;; Capture notes default
+  (setq org-directory (expand-file-name "~/org"))
+  (make-directory org-directory t)
+  
   (let ((notes (expand-file-name "note.org" org-directory)))
     (unless (file-exists-p notes)
       (with-temp-file notes))
@@ -125,10 +127,6 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(use-package ob-js      :ensure t)
-(use-package ob-css     :ensure t)
-(use-package ob-ledger  :ensure t)
-(use-package ob-sqlite  :ensure t)
 (use-package org-contrib :after org)
 
 ;; ------ Hippie expand -------
