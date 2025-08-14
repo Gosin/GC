@@ -174,7 +174,3 @@
 
 ;; ------ Notes on terminal keybindings ------
 ;; For terminal emacs, prefer using GUI where possible for richer key events.
-
-(dolist (f '(mode-line mode-line-inactive header-line))
-  (when (facep f)
-    (ignore-errors (set-face-attribute f nil :box nil))))
