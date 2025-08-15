@@ -40,17 +40,7 @@
  '(org-archive-save-context-info '(time file category todo itags olpath))
  '(org-babel-load-languages
    '((emacs-lisp . t)
-     (C . t)
-     (css . t)
-     (gnuplot . t)
-     (js . t)
-     (latex . t)
-     (ledger . t)
-     (octave . t)
-     (python . t)
-     (shell . t)
-     (sql . t)
-     (sqlite . t)))
+     (shell . t)))
  '(org-capture-templates
    '(("b" "添加一本图书")
      ("m" "添加一部影视作品")
