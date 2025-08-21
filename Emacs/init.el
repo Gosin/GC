@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2025/08/13
+;; Gosin's Emacs Configuration 2025/08/20
 
 ;; ------- Basics / Packages -------
 (setq inhibit-startup-messages t)
@@ -33,6 +33,14 @@
 (unless package-archive-contents
   (package-refresh-contents))
 (package-install-selected-packages)
+
+;; ------ Use UTF-8 Everywher ------
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(setq-default buffer-file-coding-system 'utf-8-unix)
+(set-selection-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 
 ;; ------- OS detection helpers -------
 (defconst IS-MAC    (eq system-type 'darwin))
