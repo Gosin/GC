@@ -178,5 +178,14 @@
   (setq w32-pass-rwindow-to-system nil
         w32-rwindow-modifier 'super))
 
+;; ------ Enable Emoji Fonts ------
+(when IS-WIN
+  (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil 'prepend))
+
+(when IS-MAC
+  (set-fontset-font t 'emoji (font-spec :family "Apple Color Emoji") nil 'prepend))
+
+(when IS-LINUX
+  (set-fontset-font t 'emoji (font-spec :family "Noto Color Emoji") nil 'prepend))
 ;; ------ Notes on terminal keybindings ------
 ;; For terminal emacs, prefer using GUI where possible for richer key events.
