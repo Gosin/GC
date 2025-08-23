@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2025/08/20
+;; Gosin's Emacs Configuration 2025/08/23
 
 ;; ------- Basics / Packages -------
 (setq inhibit-startup-messages t)
@@ -100,6 +100,50 @@
 (use-package paredit
   :hook ((emacs-lisp-mode lisp-mode lisp-interaction-mode scheme-mode) . enable-paredit-mode))
 
+;; --- Paredit: sane starter overrides ---
+(with-eval-after-load 'paredit
+  ;; 1) Newline keys
+  (define-key paredit-mode-map (kbd "C-j") nil) ; free C-j
+  ;; (Keep RET = paredit-newline; it's great. If you want vanilla RET:
+  ;; (define-key paredit-mode-map (kbd "RET") #'newline))
+
+  ;; 2) Slurp / Barf on arrows (ergonomic)
+  (define-key paredit-mode-map (kbd "M-<right>")     #'paredit-forward-slurp-sexp)
+  (define-key paredit-mode-map (kbd "M-<left>")      #'paredit-backward-slurp-sexp)
+  (define-key paredit-mode-map (kbd "M-S-<right>")   #'paredit-forward-barf-sexp)
+  (define-key paredit-mode-map (kbd "M-S-<left>")    #'paredit-backward-barf-sexp)
+  ;; If your terminal eats M-S-<arrow>, try these instead:
+  ;; (define-key paredit-mode-map (kbd "C-M-f") #'paredit-forward-slurp-sexp)
+  ;; (define-key paredit-mode-map (kbd "C-M-b") #'paredit-backward-slurp-sexp)
+  ;; (define-key paredit-mode-map (kbd "C-M-]") #'paredit-forward-barf-sexp)
+  ;; (define-key paredit-mode-map (kbd "C-M-[") #'paredit-backward-barf-sexp)
+
+  ;; 3) Killing: keep both behaviors handy
+  ;; Paredit makes C-k structure-aware; keep a normal kill-line too:
+  (define-key paredit-mode-map (kbd "C-S-k") #'kill-line)
+
+  ;; 4) Word deletes (sometimes missed under paredit)
+  (define-key paredit-mode-map (kbd "M-d")   #'paredit-forward-kill-word)
+  (define-key paredit-mode-map (kbd "M-DEL") #'paredit-backward-kill-word)
+
+  ;; 5) Restore symbol isearch on M-s (paredit uses M-s for splice-kill-forward)
+  (define-key paredit-mode-map (kbd "M-s") #'isearch-forward-symbol-at-point)
+
+  ;; 6) Quick wrappers (handy quality-of-life)
+  (define-key paredit-mode-map (kbd "C-c (") #'paredit-wrap-round)
+  (define-key paredit-mode-map (kbd "C-c [") #'paredit-wrap-square)
+  (define-key paredit-mode-map (kbd "C-c {") #'paredit-wrap-curly)
+  (define-key paredit-mode-map (kbd "C-c \"") #'paredit-meta-doublequote))
+
+;; Make C-j do eval-print in *scratch* only (nice for quick experiments)
+(defun my/scratch-c-j-as-eval-print ()
+  (local-set-key (kbd "C-j") #'eval-print-last-sexp))
+(add-hook 'lisp-interaction-mode-hook #'my/scratch-c-j-as-eval-print)
+
+;; Optional: use C-c C-j for eval-print anywhere
+(global-set-key (kbd "C-c C-j") #'eval-print-last-sexp)
+
+
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -107,7 +151,7 @@
 (use-package org
   :init
   (setq org-directory (or (bound-and-true-p org-directory)
-                          (expand-file-name "org" (or (getenv "ORG_HOME")
+                          (expand-file-name "Org" (or (getenv "ORG_HOME")
                                                       (expand-file-name "~")))))
   :config
   ;; Keybindings
