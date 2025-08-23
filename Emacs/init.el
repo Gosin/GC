@@ -222,6 +222,15 @@
   (setq w32-pass-rwindow-to-system nil
         w32-rwindow-modifier 'super))
 
+;; ------ Set Git for Windows ------
+(when IS-WIN
+  (let ((git-path (string-trim (shell-command-to-string "where git 2>null"))))
+    (when (and (stringp git-path)
+               (file-exists-p git-path))
+      (setq magit-git-executable git-path)
+      (add-to-list 'exec-path (file-name-directory git-path))
+      (setenv "PATH" (concat (file-name-directory git-path) ";" (getenv "PATH"))))))
+
 ;; ------ Enable Emoji Fonts ------
 (when IS-WIN
   (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil 'prepend))
