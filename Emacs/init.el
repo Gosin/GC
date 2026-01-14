@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2025/08/23
+;; Gosin's Emacs Configuration 2026/01/13
 
 ;; ------- Basics / Packages -------
 (setq inhibit-startup-messages t)
@@ -8,9 +8,9 @@
 
 (require 'package)
 (setq package-archives
-      '(("gnu"      . "https://elpa.gnu.org/packages/")
-        ("nongnu"   . "https://elpa.nongnu.org/nongnu/")
-        ("melpa"    . "https://melpa.org/packages/")))
+      '(("gnu"    . "https://elpa.gnu.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+        ("melpa"  . "https://melpa.org/packages/")))
 
 (unless package--initialized (package-initialize))
 (unless package-archive-contents (package-refresh-contents))
@@ -29,12 +29,7 @@
 (setq custom-file (locate-user-emacs-file "emacs-custom.el"))
 (when (file-exists-p custom-file) (load custom-file))
 
-;; ------ Install package ------
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-install-selected-packages)
-
-;; ------ Use UTF-8 Everywher ------
+;; ------ Use UTF-8 Everywhere ------
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)
 (setq-default buffer-file-coding-system 'utf-8-unix)
@@ -59,24 +54,19 @@
 (use-package pinentry
   :if IS-MAC
   :config
-  (pinentry-start))                     ; On macOS, ensure 'pinentry-mac' is installed; On Windows use Gpg4win
+  (pinentry-start))
 
 ;; ------- Theme with safe fallback -------
-;; Ef themes (by Protesilaos)
 (use-package ef-themes
   :ensure t
   :init
-  ;; Optional: define a quick toggle pair (pick any two you like)
-  (setq ef-themes-to-toggle '(ef-dark ef-night))  ;; ef-night is near black (nice on OLED)
-  ;; Optional polish
-  (setq ef-themes-mixed-fonts t                 ; use variable pitch for prose
-        ef-themes-variable-pitch-ui t)          ; variable-pitch UI where appropriate
+  (setq modus-themes-to-toggle '(ef-dark ef-night))
+  (setq modus-themes-mixed-fonts t
+        modus-themes-variable-pitch-ui t)
   :config
-  ;; Avoid mixing with any previously enabled theme (prevents odd faces)
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme 'ef-night :no-confirm))
 
-;; Tweak Org/outline heading sizes (example)
 (setq ef-themes-headings
       '((0 . (bold 1.2))
         (1 . (bold 1.15))
@@ -84,65 +74,69 @@
         (3 . (bold 1.05))
         (t . (regular 1.0))))
 
-;; If you previously had boxed modelines, make sure they’re off:
 (dolist (f '(mode-line mode-line-inactive header-line))
   (ignore-errors (set-face-attribute f nil :box nil)))
 
-;; Optional: bind a toggle key
 (global-set-key (kbd "C-c t") #'ef-themes-toggle)
 
 ;; ------ Window navigation -------
-;; Use Shift+Meta+Arrows to avoid Org shift-selection conflicts
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings 'meta))
+
+;; ------ Development: Treesitter & LSP ------
+;; Auto-install grammars and map modes (Essential for C++/Rust on Emacs 29+)
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode)
+  (setq treesit-auto-install 'prompt))
+
+;; Built-in LSP client
+(use-package eglot
+  :hook ((rust-ts-mode c++-ts-mode python-ts-mode) . eglot-ensure)
+  :config
+  (setq eglot-events-buffer-size 0))
+
+;; ------ Git Integration (Magit) ------
+(use-package magit
+  :bind ("C-x g" . magit-status)
+  :config
+  ;; Fix Git path on Windows
+  (when IS-WIN
+    (let ((git-path (string-trim (shell-command-to-string "where git 2>null"))))
+      (when (and (stringp git-path)
+                 (file-exists-p git-path))
+        (setq magit-git-executable git-path)
+        (add-to-list 'exec-path (file-name-directory git-path))))))
 
 ;; ------ Paredit / delimiters -------
 (use-package paredit
   :hook ((emacs-lisp-mode lisp-mode lisp-interaction-mode scheme-mode) . enable-paredit-mode))
 
-;; --- Paredit: sane starter overrides ---
 (with-eval-after-load 'paredit
-  ;; 1) Newline keys
-  (define-key paredit-mode-map (kbd "C-j") nil) ; free C-j
-  ;; (Keep RET = paredit-newline; it's great. If you want vanilla RET:
-  ;; (define-key paredit-mode-map (kbd "RET") #'newline))
-
-  ;; 2) Slurp / Barf on arrows (ergonomic)
+  (define-key paredit-mode-map (kbd "C-j") nil)
+  
   (define-key paredit-mode-map (kbd "M-<right>")     #'paredit-forward-slurp-sexp)
   (define-key paredit-mode-map (kbd "M-<left>")      #'paredit-backward-slurp-sexp)
   (define-key paredit-mode-map (kbd "M-S-<right>")   #'paredit-forward-barf-sexp)
   (define-key paredit-mode-map (kbd "M-S-<left>")    #'paredit-backward-barf-sexp)
-  ;; If your terminal eats M-S-<arrow>, try these instead:
-  ;; (define-key paredit-mode-map (kbd "C-M-f") #'paredit-forward-slurp-sexp)
-  ;; (define-key paredit-mode-map (kbd "C-M-b") #'paredit-backward-slurp-sexp)
-  ;; (define-key paredit-mode-map (kbd "C-M-]") #'paredit-forward-barf-sexp)
-  ;; (define-key paredit-mode-map (kbd "C-M-[") #'paredit-backward-barf-sexp)
-
-  ;; 3) Killing: keep both behaviors handy
-  ;; Paredit makes C-k structure-aware; keep a normal kill-line too:
+  
   (define-key paredit-mode-map (kbd "C-S-k") #'kill-line)
-
-  ;; 4) Word deletes (sometimes missed under paredit)
+  
   (define-key paredit-mode-map (kbd "M-d")   #'paredit-forward-kill-word)
   (define-key paredit-mode-map (kbd "M-DEL") #'paredit-backward-kill-word)
-
-  ;; 5) Restore symbol isearch on M-s (paredit uses M-s for splice-kill-forward)
+  
   (define-key paredit-mode-map (kbd "M-s") #'isearch-forward-symbol-at-point)
-
-  ;; 6) Quick wrappers (handy quality-of-life)
+  
   (define-key paredit-mode-map (kbd "C-c (") #'paredit-wrap-round)
   (define-key paredit-mode-map (kbd "C-c [") #'paredit-wrap-square)
   (define-key paredit-mode-map (kbd "C-c {") #'paredit-wrap-curly)
   (define-key paredit-mode-map (kbd "C-c \"") #'paredit-meta-doublequote))
 
-;; Make C-j do eval-print in *scratch* only (nice for quick experiments)
 (defun my/scratch-c-j-as-eval-print ()
   (local-set-key (kbd "C-j") #'eval-print-last-sexp))
 (add-hook 'lisp-interaction-mode-hook #'my/scratch-c-j-as-eval-print)
 
-;; Optional: use C-c C-j for eval-print anywhere
 (global-set-key (kbd "C-c C-j") #'eval-print-last-sexp)
-
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -150,32 +144,25 @@
 ;; ------- Org basics -------
 (use-package org
   :init
+  ;; Logic consolidated here so config doesn't overwrite it
   (setq org-directory (or (bound-and-true-p org-directory)
                           (expand-file-name "Org" (or (getenv "ORG_HOME")
                                                       (expand-file-name "~")))))
+  (setq org-default-notes-file (expand-file-name "note.org" org-directory))
   :config
-  ;; Keybindings
+  ;; Create directory if missing
+  (unless (file-exists-p org-directory)
+    (make-directory org-directory t))
+  
   (global-set-key (kbd "C-c l") #'org-store-link)
   (global-set-key (kbd "C-c a") #'org-agenda)
   (global-set-key (kbd "C-c c") #'org-capture)
 
-  ;; Clock persistence
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate)
 
-  ;; Capture notes default
-  (setq org-directory (expand-file-name "~/org"))
-  (make-directory org-directory t)
-  
-  (let ((notes (expand-file-name "note.org" org-directory)))
-    (unless (file-exists-p notes)
-      (with-temp-file notes))
-    (setq org-default-notes-file notes))
-
-  ;; Enable org-tempo for <s TAB etc.
   (require 'org-tempo))
 
-;; Nicer bullets
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
@@ -184,18 +171,18 @@
 ;; ------ Hippie expand -------
 (global-set-key [remap dabbrev-expand] #'hippie-expand)
 
-;; ------- JS Mode: prefer tree-sitter on Emacs 29+, else js2 -------
+;; ------- JS Mode -------
 (cond
- ((boundp 'js-ts-mode)                  ; Emacs 29+
+ ((boundp 'js-ts-mode)
   (add-to-list 'major-mode-remap-alist '(javascript-mode . js-ts-mode)))
  (t
   (use-package js2-mode
     :mode "\\.js\\'")))
 
-;; ------ Lilypond: add whichever path exists
-(let* ((cands (list "/opt/homebrew/share/emacs/site-lisp/lilypond" ; macOS M chip
-                    "/usr/local/share/emacs/site-lisp/lilypond"   ; macOS Intel / Some Linux
-                    "/usr/share/emacs/site-lisp/lilypond"))       ; Linux
+;; ------ Lilypond ------
+(let* ((cands (list "/opt/homebrew/share/emacs/site-lisp/lilypond"
+                    "/usr/local/share/emacs/site-lisp/lilypond"
+                    "/usr/share/emacs/site-lisp/lilypond"))
        (lpdir (seq-find #'file-directory-p cands)))
   (when lpdir
     (add-to-list 'load-path lpdir)
@@ -209,11 +196,11 @@
   :config (yas-reload-all))
 (use-package yasnippet-snippets :after yasnippet)
 
-;; ------ Load personal library (only if present) ------
+;; ------ Load personal library ------
 (let ((goer (expand-file-name "goer.el" user-emacs-directory)))
   (when (file-exists-p goer) (load-file goer)))
 
-;; ------ macOS/Windows optional key modifiers ------
+;; ------ macOS/Windows modifiers ------
 (when IS-MAC
   (setq mac-option-modifier 'meta
         mac-command-modifier 'super))
@@ -221,15 +208,6 @@
 (when IS-WIN
   (setq w32-pass-rwindow-to-system nil
         w32-rwindow-modifier 'super))
-
-;; ------ Set Git for Windows ------
-(when IS-WIN
-  (let ((git-path (string-trim (shell-command-to-string "where git 2>null"))))
-    (when (and (stringp git-path)
-               (file-exists-p git-path))
-      (setq magit-git-executable git-path)
-      (add-to-list 'exec-path (file-name-directory git-path))
-      (setenv "PATH" (concat (file-name-directory git-path) ";" (getenv "PATH"))))))
 
 ;; ------ Enable Emoji Fonts ------
 (when IS-WIN
@@ -240,5 +218,3 @@
 
 (when IS-LINUX
   (set-fontset-font t 'emoji (font-spec :family "Noto Color Emoji") nil 'prepend))
-;; ------ Notes on terminal keybindings ------
-;; For terminal emacs, prefer using GUI where possible for richer key events.
