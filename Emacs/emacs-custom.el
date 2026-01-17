@@ -91,7 +91,16 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(0blayout auctex cmake-mode cnfonts command-log-mode company decor
+              ef-themes envrc exec-path-from-shell
+              flycheck-clang-analyzer flycheck-clang-tidy
+              flycheck-ledger flymake-shellcheck glsl-mode helm
+              htmlize js2-mode lua-mode magit markdown-mode ob-rust
+              org-bullets org-contrib org-mac-link org-notify
+              org-superstar paredit pinentry rainbow-delimiters
+              rust-mode scala-mode sml-mode tree-sitter-langs
+              treesit-auto yaml-mode yasnippet-snippets ycmd))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)
