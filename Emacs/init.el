@@ -158,11 +158,10 @@
   :config
   (envrc-global-mode))
 
-;; Optional: Auto-restart Eglot when the environment changes,
-;; BUT ONLY if we are in a programming mode.
+;; Only start Eglot for specific modes
 (add-hook 'envrc-mode-hook
           (lambda ()
-            (when (derived-mode-p 'prog-mode)
+            (when (derived-mode-p 'python-mode 'js-mode 'typescript-mode 'rust-mode)
               (eglot-ensure))))
 
 ;; --- Git Integration (Magit) ---
