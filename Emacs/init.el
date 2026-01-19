@@ -300,6 +300,31 @@
 (let ((goer (expand-file-name "goer.el" user-emacs-directory)))
   (when (file-exists-p goer) (load-file goer)))
 
+;; Python development
+;; Basic uv integration
+(setq python-shell-interpreter "uv"
+      python-shell-interpreter-args "run python")
+
+;; Helper functions
+(defun my/uv-run ()
+  "Run current file with uv"
+  (interactive)
+  (compile (format "uv run %s" (buffer-file-name))))
+
+(defun my/uv-add (pkg)
+  "Add package with uv"
+  (interactive "sPackage: ")
+  (compile (format "uv add %s" pkg)))
+
+;; Keybindings
+(add-hook 'python-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c C-v r") 'my/uv-run)
+            (local-set-key (kbd "C-c C-v a") 'my/uv-add)))
+
+;; LSP with eglot
+(add-hook 'python-mode-hook 'eglot-ensure)
+
 ;; ============================================================
 ;; 8. KEYBOARD MODIFIERS
 ;; ============================================================
