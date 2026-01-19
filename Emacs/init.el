@@ -300,30 +300,158 @@
 (let ((goer (expand-file-name "goer.el" user-emacs-directory)))
   (when (file-exists-p goer) (load-file goer)))
 
-;; Python development
-;; Basic uv integration
+;;; Python Development with uv tool, eglot, ruff server, and pyright
+
+;; ============================================================================
+;; PREREQUISITES
+;; ============================================================================
+;; Install tools globally with uv:
+;; uv tool install ruff
+;; uv tool install pyright
+
+;; ============================================================================
+;; BASIC PYTHON SETUP
+;; ============================================================================
 (setq python-shell-interpreter "uv"
       python-shell-interpreter-args "run python")
 
-;; Helper functions
+;; ============================================================================
+;; EGLOT CONFIGURATION
+;; ============================================================================
+(use-package eglot
+  :hook (python-mode . eglot-ensure)
+  :config
+  
+  ;; Configure language servers for Python
+  ;; ruff server for linting and formatting
+  ;; pyright for type checking
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("uvx" "ruff" "server")))
+  
+  ;; Optional: Use both ruff server and pyright together
+  ;; Uncomment if you want both servers running simultaneously
+  ;; (add-to-list 'eglot-server-programs
+  ;;              '(python-mode . (eglot-alternatives
+  ;;                               '(("uvx" "ruff" "server")
+  ;;                                 ("uvx" "pyright-langserver" "--stdio")))))
+  
+  ;; Format on save with ruff
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 
+                        'eglot-format-buffer nil 'local))))
+
+;; ============================================================================
+;; UV PROJECT MANAGEMENT FUNCTIONS
+;; ============================================================================
+
+;; Initialize new uv project
+(defun my/uv-init ()
+  "Initialize a new uv project"
+  (interactive)
+  (let ((default-directory (read-directory-name "Project directory: ")))
+    (async-shell-command "uv init")))
+
+;; Add dependencies
+(defun my/uv-add (package)
+  "Add a package using uv"
+  (interactive "sPackage name: ")
+  (compile (format "uv add %s" package)))
+
+;; Add dev dependencies
+(defun my/uv-add-dev (package)
+  "Add a dev package using uv"
+  (interactive "sPackage name: ")
+  (compile (format "uv add --dev %s" package)))
+
+;; Sync dependencies
+(defun my/uv-sync ()
+  "Sync project dependencies"
+  (interactive)
+  (compile "uv sync"))
+
+;; Run current buffer
 (defun my/uv-run ()
   "Run current file with uv"
   (interactive)
   (compile (format "uv run %s" (buffer-file-name))))
 
-(defun my/uv-add (pkg)
-  "Add package with uv"
-  (interactive "sPackage: ")
-  (compile (format "uv add %s" pkg)))
+;; ============================================================================
+;; RUFF COMMANDS (using uvx for global tool)
+;; ============================================================================
 
-;; Keybindings
+;; Check with ruff
+(defun my/ruff-check ()
+  "Run ruff check on current buffer"
+  (interactive)
+  (compile (format "uvx ruff check %s" (buffer-file-name))))
+
+;; Fix with ruff
+(defun my/ruff-fix ()
+  "Fix current file with ruff"
+  (interactive)
+  (shell-command (format "uvx ruff check --fix %s" (buffer-file-name)))
+  (revert-buffer t t t))
+
+;; Format with ruff (manual)
+(defun my/ruff-format ()
+  "Format current buffer with ruff"
+  (interactive)
+  (shell-command (format "uvx ruff format %s" (buffer-file-name)))
+  (revert-buffer t t t))
+
+;; ============================================================================
+;; PYRIGHT TYPE CHECKING (using uvx for global tool)
+;; ============================================================================
+
+(defun my/pyright-check ()
+  "Run pyright type checking on current file"
+  (interactive)
+  (compile (format "uvx pyright %s" (buffer-file-name))))
+
+(defun my/pyright-check-project ()
+  "Run pyright on entire project"
+  (interactive)
+  (compile "uvx pyright"))
+
+;; ============================================================================
+;; KEYBINDINGS
+;; ============================================================================
+
 (add-hook 'python-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c C-v r") 'my/uv-run)
-            (local-set-key (kbd "C-c C-v a") 'my/uv-add)))
+            ;; uv commands
+            (local-set-key (kbd "C-c v r") 'my/uv-run)
+            (local-set-key (kbd "C-c v a") 'my/uv-add)
+            (local-set-key (kbd "C-c v d") 'my/uv-add-dev)
+            (local-set-key (kbd "C-c v s") 'my/uv-sync)
+            
+            ;; ruff commands
+            (local-set-key (kbd "C-c r c") 'my/ruff-check)
+            (local-set-key (kbd "C-c r f") 'my/ruff-fix)
+            (local-set-key (kbd "C-c r m") 'my/ruff-format)
+            
+            ;; pyright commands
+            (local-set-key (kbd "C-c t c") 'my/pyright-check)
+            (local-set-key (kbd "C-c t p") 'my/pyright-check-project)
+            
+            ;; eglot commands (already built-in, but listed for reference)
+            ;; C-c l a - code actions
+            ;; C-c l r - rename
+            ;; C-c l f - format buffer
+            ;; C-c l = - format region
+            ))
 
-;; LSP with eglot
-(add-hook 'python-mode-hook 'eglot-ensure)
+;; ============================================================================
+;; OPTIONAL: COMPANY/COMPLETION SETUP
+;; ============================================================================
+
+;; If using company-mode for completion
+(use-package company
+  :hook (python-mode . company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0.0))
 
 ;; ============================================================
 ;; 8. KEYBOARD MODIFIERS
