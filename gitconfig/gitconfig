@@ -1,11 +1,14 @@
 [user]
-	name = Gosin
+	signingkey = BA977C29462265A0
+    name = Gosin
 	email = canling0@gmail.com
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
 [core]
-	excludesfile = /Users/Gosin/.gitignore_global
-	editor = vim
-[credential]
-	helper = osxkeychain
+	editor = emacsclient
+	excludesfile = /Users/gosin/.gitignore_global
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -25,8 +28,3 @@
 	local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'
 	# Show git log nicely.
 	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
-
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg
