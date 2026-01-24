@@ -315,6 +315,8 @@
 (setq python-shell-interpreter "uv"
       python-shell-interpreter-args "run python")
 
+(setenv "PYTHON_BASIC_REPL" "1")
+
 ;; ============================================================================
 ;; EGLOT CONFIGURATION
 ;; ============================================================================
