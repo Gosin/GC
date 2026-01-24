@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2026/01/13
+;; Gosin's Emacs Configuration 2026/02/24
 
 ;; ============================================================
 ;; 1. BASICS & PACKAGE MANAGEMENT
@@ -312,9 +312,6 @@
 ;; ============================================================================
 ;; BASIC PYTHON SETUP
 ;; ============================================================================
-(setq python-shell-interpreter "uv"
-      python-shell-interpreter-args "run python")
-
 (setenv "PYTHON_BASIC_REPL" "1")
 
 ;; ============================================================================
