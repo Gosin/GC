@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 cp ~/.emacs.d/init.el ./init.el
 echo "init.el copied"
 cp ~/.emacs.d/emacs-custom.el ./emacs-custom.el

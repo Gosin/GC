@@ -22,14 +22,6 @@
  '(display-time-mode t nil nil "Display clock time in mode line.")
  '(epg-pinentry-mode 'loopback)
  '(eshell-mode-hook '((lambda nil (setenv "TERM" "xterm-256color"))))
- '(exec-path
-   '("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin"
-     "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14"
-     "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14"
-     "/Applications/Emacs.app/Contents/MacOS/libexec"
-     "/Applications/Emacs.app/Contents/MacOS/bin"
-     "/Library/TeX/texbin" "/usr/local/opt/llvm/bin/"
-     "/Users/gosin/.cargo/bin" nil))
  '(fido-mode t)
  '(global-display-line-numbers-mode t)
  '(gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -92,15 +84,11 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(0blayout auctex cmake-mode cnfonts command-log-mode company decor
-              ef-themes envrc exec-path-from-shell
-              flycheck-clang-analyzer flycheck-clang-tidy
-              flycheck-ledger flymake-shellcheck glsl-mode helm
-              htmlize js2-mode lua-mode magit markdown-mode ob-rust
-              org-bullets org-contrib org-mac-link org-notify
-              org-superstar paredit pinentry rainbow-delimiters
-              rust-mode scala-mode sml-mode tree-sitter-langs
-              treesit-auto yaml-mode yasnippet-snippets ycmd))
+   '(company ef-themes envrc exec-path-from-shell js2-mode magit
+             orderless org-contrib org-mac-link org-superstar paredit
+             pinentry rainbow-delimiters treesit-auto vertico
+             yasnippet-snippets cmake-mode helm lua-mode markdown-mode
+             rust-mode org-bullets org-superstar))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)

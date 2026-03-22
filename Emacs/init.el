@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2026/02/24
+;; Gosin's Emacs Configuration 2026/03/21
 
 ;; ============================================================
 ;; 1. BASICS & PACKAGE MANAGEMENT
@@ -62,6 +62,19 @@
 (set-selection-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+
+;; Enable Vertico for vertical completion UI
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+;; Enable Orderless for fuzzy matching
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (style basic partial-completion)))))
 
 ;; ============================================================
 ;; 3. OS SPECIFIC SETUP
