@@ -88,7 +88,7 @@
              orderless org-contrib org-mac-link org-superstar paredit
              pinentry rainbow-delimiters treesit-auto vertico
              yasnippet-snippets cmake-mode helm lua-mode markdown-mode
-             rust-mode org-bullets org-superstar))
+             rust-mode org-bullets org-superstar flymake))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)
