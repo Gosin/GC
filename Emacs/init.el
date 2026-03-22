@@ -11,6 +11,10 @@
 (dolist (f '(mode-line mode-line-inactive header-line))
   (ignore-errors (set-face-attribute f nil :box nil)))
 
+;; Remove built-in org so that latest org can be installed
+(assq-delete-all 'org package--builtins)
+(assq-delete-all 'org package--builtin-versions)
+
 ;; Initialize the package manager.
 (require 'package)
 
