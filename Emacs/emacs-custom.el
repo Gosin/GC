@@ -84,11 +84,12 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(cmake-mode company ef-themes envrc exec-path-from-shell flymake helm
-                js2-mode lua-mode magit markdown-mode orderless org
-                org-bullets org-contrib org-mac-link org-notify
-                org-superstar paredit pinentry rainbow-delimiters
-                rust-mode treesit-auto vertico yasnippet-snippets))
+   '(cmake-mode company ef-themes envrc exec-path-from-shell flymake
+                flymake-ruff helm js2-mode lua-mode magit
+                markdown-mode orderless org org-bullets org-contrib
+                org-mac-link org-notify org-superstar paredit pinentry
+                rainbow-delimiters rust-mode treesit-auto vertico
+                yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)

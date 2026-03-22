@@ -162,6 +162,14 @@
 ;; add homebrew bin package to exec path
 (add-to-list 'exec-path "/opt/homebrew/bin/")
 (setenv "PATH" (concat "/opt/homebrew/bin/:" (getenv "PATH")))
+
+;; add envrc
+(use-package envrc
+  :config
+  (envrc-global-mode)
+  :hook (after-init . envrc-global-mode))
+
+
 ;; 'eglot' is the built-in LSP client (Emacs 29+). It connects to external
 ;; language servers (rust-analyzer, clangd, pyright) for code completion.
 (use-package eglot
@@ -170,10 +178,6 @@
   ;; Optimization: Don't log every single JSON event to a buffer (improves speed).
   (setq eglot-events-buffer-size 0))
 
-;; add envrc
-(use-package envrc
-  :config
-  (envrc-global-mode))
 
 ;; Only start Eglot for specific modes
 (add-hook 'envrc-mode-hook
@@ -342,14 +346,11 @@
   ;; ruff server for linting and formatting
   ;; pyright for type checking
   (add-to-list 'eglot-server-programs
-               '(python-mode . ("uvx" "ruff" "server")))
-  
-  ;; Optional: Use both ruff server and pyright together
-  ;; Uncomment if you want both servers running simultaneously
-  ;; (add-to-list 'eglot-server-programs
-  ;;              '(python-mode . (eglot-alternatives
-  ;;                               '(("uvx" "ruff" "server")
-  ;;                                 ("uvx" "pyright-langserver" "--stdio")))))
+               '((python-mode python-ts-mode) . ("pyright-langserver" "--stdio")))
+
+  ;; Use flymake with ruff
+  (use-package flymake-ruff
+    :hook (python-mode .flymake-ruff-load))
   
   ;; Format on save with ruff
   (add-hook 'python-mode-hook
