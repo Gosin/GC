@@ -1,6 +1,8 @@
 #!/bin/sh
 cp ~/.emacs.d/init.el ./init.el
 echo "init.el copied"
+cp ~/.emacs.d/local.el ./local.el
+echo "local.el copied"
 cp ~/.emacs.d/emacs-custom.el ./emacs-custom.el
 echo "emacs-custom.el copied"
 cp -R ~/.emacs.d/snippets/ ./snippets/

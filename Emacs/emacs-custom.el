@@ -24,61 +24,14 @@
  '(eshell-mode-hook '((lambda nil (setenv "TERM" "xterm-256color"))))
  '(fido-mode t)
  '(global-display-line-numbers-mode t)
+ '(global-visual-line-mode t)
  '(gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
  '(ido-create-new-buffer 'always)
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(ido-mode 'both nil (ido) "Enable ido-mode for all buffers and files")
  '(indent-tabs-mode nil)
- '(latex-run-command "pdflatex")
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
- '(org-agenda-files
-   '("/Users/gosin/Documents/Org/TAOCP.org"
-     "/Users/gosin/Documents/Org/gosin.org"
-     "/Users/gosin/Documents/Org/home.org"
-     "/Users/gosin/Documents/Org/note.org"
-     "/Users/gosin/Documents/Org/wyatterp_wolfram.org"))
- '(org-agenda-include-diary t)
- '(org-archive-save-context-info '(time file category todo itags olpath))
- '(org-babel-load-languages '((emacs-lisp . t) (shell . t)))
- '(org-capture-templates
-   '(("b" "添加一本图书") ("m" "添加一部影视作品")
-     ("mt" "添加一部想看的影视作品" entry
-      (file "~/Documents/Org/movies.org") "* TODO %?\12  %U" :prepend
-      t)
-     ("md" "添加一部看过的电影" entry
-      (file "~/Documents/Org/movies.org") "* DONE %?\12  %U")
-     ("mi" "添加一部正在看的电视剧" entry
-      (file "~/Documents/Org/movies.org") "* WATCHING %?\12  %U"
-      :prepend t empty-lines-after 1)
-     ("bd" "添加一本读过的图书" entry
-      (file "~/Documents/Org/books.org") "* DONE %?\12  %U")
-     ("bt" "添加一本想读的图书" entry
-      (file "~/Documents/Org/books.org") "* TODO %?\12  %U")
-     ("bi" "添加一本正在阅读的图书" entry
-      (file "~/Documents/Org/books.org") "* READING %?\12  %U"
-      :prepend t :empty-lines-before 1 :empty-lines-after 1)
-     ("t" "Add an TODO item" entry (file "~/Documents/Org/note.org")
-      "* TODO %?%U%i" :prepend t :empty-lines-before 1
-      :empty-lines-after 1)
-     ("w" "Add a Wyatt task" entry
-      (file+headline "~/Documents/Org/wyatterp_wolfram.org" "Backlogs")
-      "* TODO %?" :empty-lines-after 1)))
- '(org-confirm-babel-evaluate nil)
- '(org-default-notes-file "~/Documents/Dropbox/Org/note.org")
- '(org-directory "~/Documents/Org")
- '(org-hide-emphasis-markers t)
- '(org-log-done 'time)
- '(org-log-into-drawer "LOGBOOK")
- '(org-modules
-   '(ol-bbdb ol-bibtex org-crypt ol-docview ol-doi ol-eww ol-gnus
-             org-habit org-id ol-info ol-irc ol-mhe org-protocol
-             ol-rmail org-tempo ol-w3m ol-eshell ol-git-link
-             org-mac-link org-notify))
- '(org-pretty-entities t)
- '(org-refile-allow-creating-parent-nodes 'confirm)
- '(org-refile-targets '((org-agenda-files :maxlevel . 6)))
- '(org-use-sub-superscripts '{})
  '(package-archives
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
@@ -92,13 +45,10 @@
                 yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
- '(tab-width 4)
- '(with-editor-emacsclient-executable "/opt/homebrew/bin/emacsclient"))
+ '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:height 140 :width normal :family "Berkeley Mono"))))
- '(ansi-color-blue ((t (:background "DeepSkyBlue1" :foreground "DeepSkyBlue1"))))
- '(cursor ((t (:background "yellow1" :foreground "#002b36" :inverse-video t)))))
+ )
