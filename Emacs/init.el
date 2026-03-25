@@ -414,6 +414,14 @@
 ;; 7. MISC LANGUAGES & TOOLS
 ;; ============================================================
 
+;; Clean up autosave and back up files
+(use-package no-littering
+  :ensure t
+  :config
+  ;; Also redirect auto-save files
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+
 ;; Smart Autocomplete: complete words from all open buffers.
 ;; dabbrev-expand only searches the current buffer. hippie-expand tries a
 ;; sequence of strategies: buffer words, other-buffer words, file names,

@@ -4,9 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(apropos-sort-by-scores t)
+ '(backup-by-copying t)
  '(backup-directory-alist '(("." . "~/.emacs_backups")))
  '(column-number-mode t)
  '(debug-on-error t nil nil "Turn on this flag to help learning emacs.")
+ '(delete-old-versions t)
  '(dired-auto-revert-buffer t nil nil "Always update Dired buffer when revisiting.")
  '(dired-clean-confirm-killing-deleted-buffers nil nil nil "don't ask whether to kill")
  '(dired-create-destination-dirs 'ask nil nil "Whether to create directory in path if missing")
@@ -31,7 +33,13 @@
  '(ido-everywhere t)
  '(ido-mode 'both nil (ido) "Enable ido-mode for all buffers and files")
  '(indent-tabs-mode nil)
+ '(kept-new-versions 5)
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
+ '(org-structure-template-alist
+   '(("a" . "export ascii") ("c" . "center") ("C" . "comment")
+     ("e" . "example") ("E" . "export") ("h" . "export html")
+     ("l" . "export latex") ("q" . "quote") ("s" . "src")
+     ("v" . "verse")))
  '(package-archives
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
@@ -45,7 +53,8 @@
                 yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
- '(tab-width 4))
+ '(tab-width 4)
+ '(version-control t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
