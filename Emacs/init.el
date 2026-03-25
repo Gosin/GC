@@ -54,6 +54,10 @@
   :config
   (unless (server-running-p) (server-start)))
 
+;; Enable ansi-color
+(require 'ansi-color)
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
 ;; Keep 'init.el' clean.
 ;; Emacs automatically appends customization settings (e.g., from M-x customize
 ;; or package install confirmations) to the end of your init file. We redirect
