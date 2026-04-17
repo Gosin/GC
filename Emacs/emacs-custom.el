@@ -45,12 +45,16 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(cmake-mode company ef-themes envrc exec-path-from-shell flymake
-                flymake-ruff helm js2-mode lua-mode magit
-                markdown-mode orderless org org-bullets org-contrib
-                org-mac-link org-notify org-superstar paredit pinentry
-                rainbow-delimiters rust-mode treesit-auto vertico
-                yasnippet-snippets))
+   '(0blayout auctex cmake-mode cnfonts command-log-mode company decor
+              ef-themes envrc exec-path-from-shell
+              flycheck-clang-analyzer flycheck-clang-tidy
+              flycheck-ledger flymake-ruff flymake-shellcheck
+              glsl-mode helm htmlize js2-mode lua-mode magit
+              markdown-mode no-littering ob-rust orderless org-bullets
+              org-contrib org-mac-link org-notify org-superstar
+              paredit pinentry rainbow-delimiters rust-mode scala-mode
+              sml-mode tree-sitter-langs treesit-auto vertico
+              yaml-mode yasnippet-snippets ycmd clang-format))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)
