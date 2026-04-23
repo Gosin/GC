@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2026/03/22
+;; Gosin's Emacs Configuration 2026/04/23
 
 ;; ============================================================
 ;; 1. BASICS & PACKAGE MANAGEMENT
@@ -398,6 +398,28 @@
   ;; org-tempo was split into its own module in Org 9.2. Without requiring it
   ;; explicitly, the <s TAB shorthand silently stops working.
   (require 'org-tempo))
+
+	;; --- Org Roam (Zettelkasten) ---
+(use-package org-roam
+  :ensure t
+  :custom
+  ;; Place notes in a 'roam' subdirectory of your main Org folder
+  (org-roam-directory (expand-file-name "roam" org-directory))
+  ;; Keep the database in a hidden file within the roam directory
+  (org-roam-db-location (expand-file-name ".org-roam.db" (org-roam-directory)))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Journaling / Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  ;; Ensure the directory exists
+  (unless (file-exists-p org-roam-directory)
+    (make-directory org-roam-directory t))
+  ;; Automatically sync the database to keep backlinks updated
+  (org-roam-db-autosync-mode))
 
 ;; Make bullet points look nicer (SVG bullets instead of asterisks).
 ;; org-superstar replaces the leading * characters with Unicode bullet glyphs,
