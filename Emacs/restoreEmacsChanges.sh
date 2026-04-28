@@ -1,3 +1,3 @@
 #!/bin/sh
 cp ./*.el ~/.emacs.d/
-cp -R ./snippets/ ~/.emacs.d/snippets/
+cp -R ./snippets ~/.emacs.d/
