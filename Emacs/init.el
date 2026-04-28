@@ -215,11 +215,14 @@
 ;; This is critical for uv-based Python projects: each project has its own
 ;; .venv, and direnv activates it so that pyright, ruff, and python all resolve
 ;; to the project-local versions rather than whatever is globally on PATH.
-;; Without this, eglot may start pyright from the wrong interpreter/environment.
+;; 
+;; Note: Using :hook (prog-mode . envrc-mode) instead of (envrc-global-mode 1)
+;; ensures that environment propagation only occurs in programming buffers.
+;; This prevents envrc from interfering with global shell commands in Org or 
+;; other non-coding modes, avoiding issues where invalid paths might crash 
+;; sub-processes (e.g., during org-id generation).
 (use-package envrc
-  :config
-  (envrc-global-mode)
-  :hook (after-init . envrc-global-mode))
+  :hook (prog-mode . envrc-mode))
 
 ;; --- LSP (Language Server Protocol) ---
 ;; Single unified eglot block covering all languages.
@@ -450,6 +453,39 @@
 ;; yasnippet expansions — making it a much more useful tab-completion fallback
 ;; when no LSP is active.
 (global-set-key [remap dabbrev-expand] #'hippie-expand)
+
+
+;;; Autocompletion setup
+;; 1. The UI - Vertical and unobtrusive
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode)
+  :custom
+  ;; This solves your "test" buffer problem: 
+  ;; It allows you to select the prompt itself as a candidate.
+  (vertico-preselect 'prompt))
+
+;; 2. The Engine - Match "foo bar" as "foo" AND "bar" in any order
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; 3. The Metadata - See file sizes/perms in the minibuffer
+(use-package marginalia
+  :ensure t
+  :init
+  (marginalia-mode))
+
+;; 4. The Actions - The "Right-click" for Emacs
+(use-package embark
+  :ensure t
+  :bind
+  (("C-." . embark-act)         ;; pick an action for the candidate
+   ("C-;" . embark-dwim)))      ;; do the default action
 
 ;; JavaScript Configuration.
 ;; js-ts-mode (Emacs 29+, tree-sitter based) gives better syntax highlighting

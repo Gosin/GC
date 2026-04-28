@@ -31,10 +31,11 @@
  '(ido-create-new-buffer 'always)
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
- '(ido-mode 'both nil (ido) "Enable ido-mode for all buffers and files")
+ '(ido-mode nil nil (ido) "Enable ido-mode for all buffers and files")
  '(indent-tabs-mode nil)
  '(kept-new-versions 5)
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
+ '(org-roam-db-autosync-mode t)
  '(org-structure-template-alist
    '(("a" . "export ascii") ("c" . "center") ("C" . "comment")
      ("e" . "example") ("E" . "export") ("h" . "export html")
@@ -45,20 +46,21 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(async clang-format cmake-mode corfu company cond-let consult
-           consult-org-roam corfu ef-themes emacsql envrc
-           exec-path-from-shell flymake flymake-ruff gptel helm
-           helm-core inheritenv jinja2-mode js2-mode llama lua-mode
-           magit magit-section marginalia markdown-mode modus-themes
-           no-littering orderless org org-bullets org-contrib
-           org-mac-link org-notify org-roam org-superstar paredit
-           pinentry posframe rainbow-delimiters rust-mode transient
-           treesit-auto vertico wfnames with-editor yaml yasnippet
-           yasnippet-snippets))
+   '(async clang-format cmake-mode company consult-org-roam corfu
+           ef-themes embark envrc exec-path-from-shell flymake
+           flymake-ruff gptel jinja2-mode js2-mode lua-mode magit
+           marginalia markdown-mode no-littering orderless org-bullets
+           org-contrib org-mac-link org-notify org-superstar paredit
+           pinentry rainbow-delimiters rust-mode treesit-auto vertico
+           wfnames yaml yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)
- '(version-control t))
+ '(version-control t)
+ '(yas-snippet-dirs
+   '("~/.emacs.d/snippets/"
+     "/home/gosin/.emacs.d/etc/yasnippet/snippets/"
+     yasnippet-snippets-dir)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
