@@ -226,6 +226,35 @@
                                 :background "DeepSkyBlue1"
                                 :foreground "DeepSkyBlue1")))
 
+;; Config gptel to use llama.cpp running on Homelab
+(defun my/llama-fetch-models (host protocol)
+  "Fetch available models from llama-server via /v1/models."
+  (let* ((url (format "%s://%s/v1/models" protocol host))
+         (response (with-current-buffer (url-retrieve-synchronously url t)
+                     (goto-char (point-min))
+                     (re-search-forward "^$")
+                     (json-parse-buffer :object-type 'plist)))
+         (data (plist-get response :data)))
+    (mapcar (lambda (m) (intern (plist-get m :id))) data)))
+
+(defun my/setup-llama-backend ()
+  "Set up llama-cpp backend by fetching models from the server."
+  (let* ((host "192.168.50.101:11434")
+         (protocol "http")
+         (models (condition-case nil
+                     (my/llama-fetch-models host protocol)
+                   (error '(Qwen_Qwen3-14B-Q5_K_M))))) ;; fallback if server is down
+    (setq gptel-backend
+          (gptel-make-openai "llama-cpp"
+            :stream t
+            :protocol protocol
+            :host host
+            :models models))
+    (setq gptel-model 'Qwen_Qwen3-14B-Q5_K_M)))
+
+;; Run after init so the server has time to be reachable
+(add-hook 'emacs-startup-hook #'my/setup-llama-backend)
+
 ;; ============================================================
 ;; EXAMPLE: CONDITIONAL BLOCKS BY MACHINE
 ;; ============================================================
