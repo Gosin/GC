@@ -45,15 +45,16 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
-   '(async clang-format cmake-mode company cond-let consult
-           consult-org-roam ef-themes emacsql envrc
+   '(async clang-format cmake-mode corfu company cond-let consult
+           consult-org-roam corfu ef-themes emacsql envrc
            exec-path-from-shell flymake flymake-ruff gptel helm
            helm-core inheritenv jinja2-mode js2-mode llama lua-mode
-           magit magit-section markdown-mode modus-themes no-littering
-           orderless org org-bullets org-contrib org-mac-link
-           org-notify org-roam org-superstar paredit pinentry posframe
-           rainbow-delimiters rust-mode transient treesit-auto vertico
-           wfnames with-editor yaml yasnippet yasnippet-snippets))
+           magit magit-section marginalia markdown-mode modus-themes
+           no-littering orderless org org-bullets org-contrib
+           org-mac-link org-notify org-roam org-superstar paredit
+           pinentry posframe rainbow-delimiters rust-mode transient
+           treesit-auto vertico wfnames with-editor yaml yasnippet
+           yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)
