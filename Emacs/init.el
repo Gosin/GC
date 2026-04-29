@@ -402,7 +402,7 @@
   ;; explicitly, the <s TAB shorthand silently stops working.
   (require 'org-tempo))
 
-	;; --- Org Roam (Zettelkasten) ---
+;; --- Org Roam (Zettelkasten) ---
 (use-package org-roam
   :ensure t
   :custom
@@ -410,13 +410,13 @@
   (org-roam-directory (expand-file-name "roam" org-directory))
   ;; Keep the database in a hidden file within the roam directory
   (org-roam-db-location (expand-file-name ".org-roam.db" (org-roam-directory)))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
+  :bind (("C-c z l" . org-roam-buffer-toggle)
+         ("C-c z f" . org-roam-node-find)
+         ("C-c z g" . org-roam-graph)
+         ("C-c z i" . org-roam-node-insert)
+         ("C-c z c" . org-roam-capture)
          ;; Journaling / Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
+         ("C-c z j" . org-roam-dailies-capture-today))
   :config
   ;; Ensure the directory exists
   (unless (file-exists-p org-roam-directory)
@@ -486,6 +486,14 @@
   :bind
   (("C-." . embark-act)         ;; pick an action for the candidate
    ("C-;" . embark-dwim)))      ;; do the default action
+
+;; HTML/CSS development
+(use-package web-mode
+  :mode ("\\.html\\'" "\\.htmx\\'")
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (add-hook 'web-mode-hook 'emmet-mode)
+  (add-hook 'css-mode-hook 'emmet-mode))
 
 ;; JavaScript Configuration.
 ;; js-ts-mode (Emacs 29+, tree-sitter based) gives better syntax highlighting
