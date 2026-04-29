@@ -35,6 +35,7 @@
  '(indent-tabs-mode nil)
  '(kept-new-versions 5)
  '(lua-documentation-url "http://www.lua.org/manual/5.4/manual.html")
+ '(org-src-content-indentation 0)
  '(org-structure-template-alist
    '(("a" . "export ascii") ("c" . "center") ("C" . "comment")
      ("e" . "example") ("E" . "export") ("h" . "export html")
