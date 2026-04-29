@@ -1,4 +1,4 @@
-;; Gosin's Emacs Configuration 2026/04/23
+;; Gosin's Emacs Configuration 2026/04/29
 
 ;; ============================================================
 ;; 1. BASICS & PACKAGE MANAGEMENT
@@ -492,8 +492,22 @@
   :mode ("\\.html\\'" "\\.htmx\\'")
   :config
   (setq web-mode-markup-indent-offset 2)
-  (add-hook 'web-mode-hook 'emmet-mode)
-  (add-hook 'css-mode-hook 'emmet-mode))
+  (add-hook 'web-mode-hook #'emmet-mode)
+  (add-hook 'css-mode-hook #'emmet-mode))
+
+(add-hook 'css-ts-mode-hook
+          (lambda ()
+            (setq-local emmet-use-css-transform t)
+            (emmet-mode 1)))
+
+(add-hook 'emmet-mode-hook
+          (lambda ()
+            (electric-indent-local-mode -1)
+            (local-set-key (kbd "C-j") #'emmet-expand-line)))
+
+;; Disable electric-indent in markup/style modes not covered by emmet
+(dolist (hook '(html-ts-mode-hook))
+  (add-hook hook (lambda () (electric-indent-local-mode -1))))
 
 ;; JavaScript Configuration.
 ;; js-ts-mode (Emacs 29+, tree-sitter based) gives better syntax highlighting
