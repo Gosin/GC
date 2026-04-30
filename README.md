@@ -17,7 +17,7 @@ Personal configuration
   ```
   (custom-set-variables
   '(package-selected-packages
-      '(org js2-mode yasnippet use-package org-mac-link org-notify scala-mode yaml-mode exec-path-from-shell magit flymake-shellcheck flycheck-ledger flycheck-clang-tidy flycheck-clang-analyzer flycheck command-log-mode which-key tree-sitter-langs tree-sitter lua-mode glsl-mode ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd solarized-theme rust-mode rainbow-delimiters markdown-mode company cmake-mode)))
+      '(org js2-mode yasnippet use-package org-mac-link org-notify scala-mode yaml-mode exec-path-from-shell magit flymake-shellcheck flycheck-ledger flycheck-clang-tidy flycheck-clang-analyzer flycheck command-log-mode which-key tree-sitter-langs tree-sitter lua-mode glsl-mode ob-rust htmlize pinentry cnfonts org-bullets helm paredit sml-mode ycmd rust-mode rainbow-delimiters markdown-mode company cmake-mode)))
   (package-initialize)
   (unless package-archive-contents
     (package-refresh-contents))
