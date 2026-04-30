@@ -205,8 +205,6 @@
   (dolist (f '(mode-line mode-line-inactive header-line))
     (ignore-errors (set-face-attribute f nil :box nil))))
 
-(global-set-key (kbd "C-c T") #'ef-themes-toggle)
-
 ;; Emoji font support.
 (when IS-WIN
   (set-fontset-font t 'emoji
@@ -227,9 +225,11 @@
 ;; 6. NAVIGATION & DEVELOPMENT CORE
 ;; ============================================================
 
-;; Window navigation using Meta+Shift+Arrow.
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings 'meta))
+;; Set up kbd for windmove. Considering using ace-window in the future
+(global-set-key (kbd "C-x w <left>")  'windmove-left)
+(global-set-key (kbd "C-x w <right>") 'windmove-right)
+(global-set-key (kbd "C-x w <up>")    'windmove-up)
+(global-set-key (kbd "C-x w <down>")  'windmove-down)
 
 ;; Tree-sitter grammar management.
 (use-package treesit-auto
