@@ -180,7 +180,7 @@
   (corfu-auto-prefix 1))
 
 ;; Better fallback expansion.
-(global-set-key [remap dabbrev-expand] #'hippie-expand)
+(global-set-key [remap dabbrev-expand] #'yas-expand)
 
 ;; ============================================================
 ;; 5. VISUALS & THEMES

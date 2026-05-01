@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: python doc string
+# key: doc
+# --
+"""${1:doc-string}"""$0
