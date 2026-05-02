@@ -627,3 +627,10 @@ and reports Ruff errors without destroying the current buffer."
 (add-hook 'emacs-startup-hook
           (lambda ()
             (setq gc-cons-threshold (* 16 1024 1024))))
+
+;; Sort package-selected-packages for easy comparison
+(define-advice customize-save-variable
+    (:before (variable value &optional comment) sort-packages)
+  "Alphabetically sort `package-selected-packages` whenever it is saved via customize."
+  (when (eq variable 'package-selected-packages)
+    (setq value (sort value #'string<))))
