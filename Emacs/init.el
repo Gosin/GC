@@ -425,6 +425,7 @@
          ("C-c z f" . org-roam-node-find)
          ("C-c z g" . org-roam-graph)
          ("C-c z i" . org-roam-node-insert)
+         ("C-c z d" . org-id-get-create)
          ("C-c z c" . org-roam-capture)
          ("C-c z j" . org-roam-dailies-capture-today))
   :config

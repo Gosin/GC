@@ -6,6 +6,7 @@
  '(apropos-sort-by-scores t)
  '(backup-by-copying t)
  '(backup-directory-alist '(("." . "~/.emacs_backups")))
+ '(browse-url-browser-function 'browse-url-default-browser)
  '(column-number-mode t)
  '(debug-on-error t nil nil "Turn on this flag to help learning emacs.")
  '(delete-old-versions t)
@@ -47,11 +48,12 @@
      ("nonGnuElpa" . "https://elpa.nongnu.org/nongnu/")))
  '(package-selected-packages
    '(async clang-format cmake-mode company consult-org-roam corfu
-           ef-themes embark envrc exec-path-from-shell flymake
-           flymake-ruff gptel jinja2-mode js2-mode lua-mode magit
-           marginalia markdown-mode no-littering orderless org-bullets
-           org-contrib org-mac-link org-notify org-superstar paredit
-           pinentry rainbow-delimiters rust-mode treesit-auto vertico
+           ef-themes embark-consult emmet-mode envrc
+           exec-path-from-shell flymake flymake-ruff gptel jinja2-mode
+           js2-mode lua-mode magit marginalia markdown-mode
+           no-littering orderless org-bullets org-contrib org-mac-link
+           org-notify org-superstar ox-pandoc paredit pinentry
+           rainbow-delimiters rust-mode treesit-auto vertico web-mode
            wfnames yaml yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
