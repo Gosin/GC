@@ -50,12 +50,12 @@
    '(apheleia async clang-format cmake-mode company consult-org-roam
               corfu css-ts-mode ef-themes embark-consult emmet-mode
               envrc exec-path-from-shell flymake flymake-ruff gptel
-              jinja2-mode js-ts-mode js2-mode lua-mode magit
-              marginalia markdown-mode nill no-littering orderless
-              org-bullets org-contrib org-mac-link org-notify
-              org-superstar ox-pandoc paredit pinentry
-              rainbow-delimiters rust-mode treesit-auto vertico
-              web-mode wfnames yaml yasnippet-snippets))
+              jinja2-mode js-ts-mode lua-mode magit marginalia
+              markdown-mode no-littering orderless org-bullets
+              org-contrib org-mac-link org-notify org-superstar
+              ox-pandoc paredit pinentry rainbow-delimiters rust-mode
+              treesit-auto vertico web-mode wfnames yaml
+              yasnippet-snippets))
  '(standard-indent 4)
  '(tab-always-indent nil)
  '(tab-width 4)
