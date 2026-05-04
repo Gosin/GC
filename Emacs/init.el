@@ -349,11 +349,39 @@
 (use-package yasnippet-snippets
   :after yasnippet)
 
+(use-package apheleia
+  :ensure t)
+
 ;; Web mode for HTML/HTMX.
 (use-package web-mode
+  :ensure nil
   :mode ("\\.html\\'" "\\.htmx\\'")
+  :hook (web-mode . apheleia-mode)
   :config
-  (setq web-mode-markup-indent-offset 2))
+  ;; HTML indent
+  (setq web-mode-markup-indent-offset 2)
+  ;; CSS in HTML indent
+  (setq web-mode-css-indent-offset 2)
+  ;; JS in HTML indent
+  (setq web-mode-code-indent-offset 2)
+  ;; <div> -> </div> automatically
+  (setq web-mode-enable-auto-closing t)
+  ;; class= -> class="" automatically
+  (setq web-mode-enable-auto-quoting t))
+
+(use-package css-ts-mode
+  :ensure nil
+  :mode "\\.css\\'"
+  :hook (css-ts-mode . apheleia-mode)
+  :config
+  (setq css-indent-offset 2))
+
+(use-package js-ts-mode
+  :ensure nil
+  :mode "\\.js\\'"
+  :hook (js-ts-mode . apheleia-mode)
+  :config
+  (setq js-indent-level 2))
 
 ;; Emmet expansion for HTML/CSS.
 (use-package emmet-mode

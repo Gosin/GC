@@ -27,3 +27,9 @@
     (find-file "/Users/gosin/Documents/Org/books.org")
     (find-file "/Users/gosin/Documents/Org/Emacs.org")
     (switch-to-buffer "*scratch*")))
+
+
+(defun my/markdown-to-org-region (start end)
+  "Convert the selected Markdown region to Org mode syntax using pandoc"
+  (interactive "r")
+  (shell-command-on-region start end "pandoc -f markdown -t org" t t))
