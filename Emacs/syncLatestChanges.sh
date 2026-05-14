@@ -6,6 +6,8 @@ echo "local.el copied"
 cp ~/.emacs.d/emacs-custom.el ./emacs-custom.el
 echo "emacs-custom.el copied"
 cp -R ~/.emacs.d/snippets ./
-echo "yas snippets copied"
+echo "yas snippets folder copied"
 cp ~/.emacs.d/goer.el ./goer.el
 echo "goer.el copied"
+cp -R ~/.emacs.d/lisp  ./
+echo "lisp folder copied"
