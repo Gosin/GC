@@ -96,7 +96,7 @@ Includes the dynamic project tag based on the user's selection."
                             my-org-roam-project-header-template)
          :unnarrowed t)
 
-        ("s" "Tech Notes" plain "\n\n%?"
+        ("t" "Tech Notes" plain "\n\n%?"
          :if-new (file+head "tech/%<%Y%m%d%H%M%S>-${slug}.org" 
                             "#+title: ${title}\n#+filetags: %^G\n\n* Abstract / Overview\n\n* Implementation Details\n** Code Snippet\n#+begin_src \n\n#+end_src")
          :unnarrowed t)
