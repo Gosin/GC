@@ -36,9 +36,7 @@
 ;; ====================================================================
 (defvar my-org-roam-project-list
   '("Soloist" 
-    "HomeLab" 
-    "Solar-ROI" 
-    "Woodworking-PlayShelf")
+    "HomeLab")
   "List of active projects for org-roam capture templates.")
 
 (defvar my-current-captured-project nil
@@ -53,16 +51,14 @@ Sets `my-current-captured-project` for use in subsequent template expansion step
 (defun my-org-roam-project-target-path ()
   "Calculates the file path for a new project-specific note.
 Prompts for the project name and returns a string in the format:
-'Project/<project-name>/<timestamp>-<slug>.org'.
-The timestamp is escaped to allow Org-Roam to process it during file creation."
+'Project/<project-name>/<timestamp>-<slug>.org'."
   (my-org-roam-prompt-project)
   (concat "Project/" my-current-captured-project "/" 
           "%<%Y%m%d%H%M%S>-${slug}.org"))
 
 (defun my-org-roam-project-header-template ()
   "Generates the Org-mode header block for a project note.
-Includes the dynamic project tag based on the user's selection and
-a timestamped log entry. The timestamp is escaped to survive function evaluation."
+Includes the dynamic project tag based on the user's selection."
   (concat "#+title: ${title}\n"
           (format "#+filetags: :Project:%s:\n\n" my-current-captured-project)
           "* Logged on %<%Y-%m-%d %H:%M>"))
@@ -109,6 +105,13 @@ a timestamped log entry. The timestamp is escaped to survive function evaluation
          "\n* Problem Description\n%?\n\n* Solution Approach\n\n* Complexity Analysis\n- Time: \n- Space: \n\n* Code\n#+begin_src %^{Language|python|cpp|rust}\n\n#+end_src"
          :if-new (file+head "leetcode/%<%Y%m%d%H%M%S>-${slug}.org" 
                             "#+title: ${title}\n#+filetags: :leetcode:coding:\n\n- URL: %^{URL}\n- Solved on: %<%Y-%m-%d>")
+         :unnarrowed t)
+
+        ;; LLM Insights Template
+        ("i" "LLM Insights" plain
+         "\n* Prompt context\n%?\n\n* Key Takeaways\n\n* Model Response / Synthesis\n"
+         :if-new (file+head "llm/%<%Y%m%d%H%M%S>-${slug}.org"
+                            "#+title: ${title}\n#+filetags: :llm:ai_insight:\n\n- Model: %^{Model|Gemini|GPT|Claude|Local-LLM}\n- Date: %<%Y-%m-%d>")
          :unnarrowed t)))
 
 (provide 'my-org-capture)
