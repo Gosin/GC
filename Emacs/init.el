@@ -654,6 +654,7 @@ and reports Ruff errors without destroying the current buffer."
 ;; Personal douban search function
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'douban-org)
+(require 'my-org-capture)
 
 ;; Restore lower GC threshold after startup.
 (add-hook 'emacs-startup-hook
