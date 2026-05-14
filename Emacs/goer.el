@@ -1,6 +1,14 @@
 ;;; Goer means Gosin Ergonomics.
 ;;; Some personal functions to help me.
 
+(defun sudo-edit (&optional arg)
+  "Edit currently visited file as root."
+  (interactive "P")
+  (if (or arg (not buffer-file-name))
+      (find-file (concat "/sudo:root@localhost:"
+                         (read-file-name "Find file (as root): ")))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
 (defun create-shell (directory &optional name)
   "Create a shell buffer with given directory and name if specified."
   (if (and (stringp directory)

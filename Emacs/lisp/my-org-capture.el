@@ -41,20 +41,28 @@
     "Woodworking-PlayShelf")
   "List of active projects for org-roam capture templates.")
 
-(defvar my-current-captured-project nil)
+(defvar my-current-captured-project nil
+  "Internal variable to store the project name selected during the capture process.")
 
 (defun my-org-roam-prompt-project ()
-  "Prompt for a project from the defined list."
+  "Prompts the user to select a project from `my-org-roam-project-list`.
+Sets `my-current-captured-project` for use in subsequent template expansion steps."
   (setq my-current-captured-project
         (completing-read "Select Project: " my-org-roam-project-list nil t)))
 
-;; Helper functions redefined to use concat and avoid format errors
 (defun my-org-roam-project-target-path ()
+  "Calculates the file path for a new project-specific note.
+Prompts for the project name and returns a string in the format:
+'Project/<project-name>/<timestamp>-<slug>.org'.
+The timestamp is escaped to allow Org-Roam to process it during file creation."
   (my-org-roam-prompt-project)
   (concat "Project/" my-current-captured-project "/" 
           "%<%Y%m%d%H%M%S>-${slug}.org"))
 
 (defun my-org-roam-project-header-template ()
+  "Generates the Org-mode header block for a project note.
+Includes the dynamic project tag based on the user's selection and
+a timestamped log entry. The timestamp is escaped to survive function evaluation."
   (concat "#+title: ${title}\n"
           (format "#+filetags: :Project:%s:\n\n" my-current-captured-project)
           "* Logged on %<%Y-%m-%d %H:%M>"))
@@ -97,7 +105,6 @@
                             "#+title: ${title}\n#+filetags: %^G\n\n* Abstract / Overview\n\n* Implementation Details\n** Code Snippet\n#+begin_src \n\n#+end_src")
          :unnarrowed t)
 
-        ;; New LeetCode Template
         ("l" "LeetCode" plain 
          "\n* Problem Description\n%?\n\n* Solution Approach\n\n* Complexity Analysis\n- Time: \n- Space: \n\n* Code\n#+begin_src %^{Language|python|cpp|rust}\n\n#+end_src"
          :if-new (file+head "leetcode/%<%Y%m%d%H%M%S>-${slug}.org" 
@@ -105,3 +112,5 @@
          :unnarrowed t)))
 
 (provide 'my-org-capture)
+
+;;; my-org-capture.el ends here
