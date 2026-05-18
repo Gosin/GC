@@ -257,13 +257,12 @@
   ;; Prefer Pyright for both classic and tree-sitter Python modes.
   (add-to-list 'eglot-server-programs
                '((python-mode python-ts-mode)
-                 . ("pyright-langserver" "--stdio"))))
+                 . ("uv" "run" "pyright-langserver" "--stdio"))))
 
 ;; Start Eglot only after envrc has had a chance to activate the project env.
 (add-hook 'envrc-mode-hook
           (lambda ()
-            (when (derived-mode-p 'python-base-mode
-                                  'c++-mode 'c++-ts-mode
+            (when (derived-mode-p 'c++-mode 'c++-ts-mode
                                   'rust-mode 'rust-ts-mode
                                   'js-mode 'js-ts-mode
                                   'typescript-mode 'typescript-ts-mode)
